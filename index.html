@@ -3,771 +3,1080 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robert D. Metcalfe | Professor of Economics | Columbia University</title>
+  <title>Robert D. Metcalfe | Columbia University</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ── Reset & Base ─────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:       #faf9f7;
+      --dark:        #0f1117;
+      --dark-2:      #1a1d27;
+      --cream:       #f7f5f1;
       --white:       #ffffff;
-      --ink:         #1a1a1a;
-      --ink-soft:    #3d3d3d;
-      --ink-muted:   #6b6b6b;
-      --accent:      #1a4d8f;   /* deep Columbia-adjacent blue */
-      --accent-warm: #c8472a;   /* warm terracotta for hover */
-      --rule:        #e5e0d8;
-      --tag-bg:      #eef2f8;
-      --tag-text:    #1a4d8f;
-      --max-w:       1100px;
-      --nav-h:       60px;
+      --ink:         #1c1c1e;
+      --ink-soft:    #3a3a3c;
+      --ink-muted:   #6e6e73;
+      --gold:        #c9a84c;
+      --gold-light:  #e8d4a0;
+      --blue:        #2563eb;
+      --blue-soft:   #dbeafe;
+      --rule:        #e8e4dc;
+      --max-w:       1140px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      font-size: 15.5px;
-      line-height: 1.75;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
       color: var(--ink-soft);
       background: var(--cream);
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Nav ──────────────────────────────────────────────────────────────── */
+    /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(250, 249, 247, 0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--rule);
-      height: var(--nav-h);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 clamp(1.5rem, 5vw, 3rem);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 56px;
+      background: rgba(15,17,23,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .nav-name {
-      font-family: 'Lora', serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 1rem;
-      font-weight: 600;
-      color: var(--ink);
+      color: var(--white);
       text-decoration: none;
       letter-spacing: 0.01em;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: var(--ink-muted);
+      color: rgba(255,255,255,0.55);
       text-decoration: none;
       transition: color 0.2s;
     }
+    .nav-links a:hover { color: var(--gold); }
 
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ── Layout ───────────────────────────────────────────────────────────── */
-    main {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 clamp(1.25rem, 4vw, 2.5rem);
-    }
-
-    section {
-      padding: 2rem 0;
-    }
-
-    /* ── Hero / Profile ───────────────────────────────────────────────────── */
-    #about {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 3rem;
-      align-items: start;
-      padding-top: 3.5rem;
-    }
-
-    .profile-text h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.2;
-      margin-bottom: 0.4rem;
-    }
-
-    .profile-text .title {
-      font-size: 1rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 0.2rem;
-    }
-
-    .profile-text .institution {
-      font-size: 0.95rem;
-      color: var(--ink-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .affiliations {
-      margin: 1.5rem 0;
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(37,99,235,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(201,168,76,0.06) 0%, transparent 60%);
+      padding: calc(56px + 5rem) clamp(1.5rem, 5vw, 4rem) 5rem;
       display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
+      justify-content: center;
     }
 
-    .affiliations li {
-      list-style: none;
-      font-size: 0.9rem;
-      color: var(--ink-soft);
-      padding-left: 1rem;
+    .hero-inner {
+      max-width: var(--max-w);
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-photo-wrap {
       position: relative;
     }
 
-    .affiliations li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--rule);
-    }
-
-    .affiliations a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule);
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .affiliations a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .links-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1.75rem;
-    }
-
-    .link-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.85rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-decoration: none;
-      background: var(--white);
-      color: var(--ink-soft);
-      border: 1px solid var(--rule);
-      transition: all 0.2s;
-    }
-
-    .link-chip:hover {
-      background: var(--accent);
-      color: var(--white);
-      border-color: var(--accent);
-    }
-
-    .link-chip svg {
-      width: 13px;
-      height: 13px;
-      flex-shrink: 0;
-    }
-
-    .profile-photo {
-      width: 180px;
-      height: 250px;
+    .hero-photo {
+      width: 260px;
+      height: 345px;
       object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-      flex-shrink: 0;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
-    /* Fields tag row */
-    .fields {
-      margin-top: 1.5rem;
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--gold) 0%, transparent 60%);
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    .hero-text {}
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-institution {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2rem;
+    }
+
+    .hero-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-    }
-
-    .field-tag {
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 0.25rem 0.7rem;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border-radius: 4px;
-      letter-spacing: 0.02em;
-    }
-
-    /* ── Section Headings ─────────────────────────────────────────────────── */
-    .section-heading {
-      font-family: 'Lora', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--ink);
       margin-bottom: 2rem;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .hero-chip:hover {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+
+    .hero-fields {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .hero-field {
+      font-size: 0.73rem;
+      font-weight: 500;
+      padding: 0.2rem 0.65rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.45);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .page-body {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 4rem;
+      align-items: start;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: sticky;
+      top: 76px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .sidebar-heading {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sidebar-links { list-style: none; }
+    .sidebar-links li { margin-bottom: 0.4rem; }
+    .sidebar-links a {
+      font-size: 0.85rem;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+      transition: all 0.18s;
+    }
+    .sidebar-links a:hover {
+      background: white;
+      color: var(--blue);
+    }
+    .sidebar-links .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--rule);
+      flex-shrink: 0;
+      transition: background 0.18s;
+    }
+    .sidebar-links a:hover .dot { background: var(--blue); }
+
+    .affil-list { list-style: none; }
+    .affil-list li {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.4;
+    }
+    .affil-list li:last-child { border-bottom: none; }
+    .affil-list a { color: inherit; text-decoration: none; }
+    .affil-list a:hover { color: var(--blue); }
+    .affil-list .role {
+      display: block;
+      font-size: 0.73rem;
+      color: var(--ink-muted);
+      opacity: 0.65;
+    }
+
+    /* ── CONTENT ── */
+    .content {}
+
+    .content-section { margin-bottom: 3.5rem; }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
-
-    .section-heading::after {
+    .section-label::after {
       content: '';
-      display: block;
       flex: 1;
       height: 1px;
       background: var(--rule);
     }
 
-    /* ── Publication List ─────────────────────────────────────────────────── */
-    .pub-list {
+    /* Publication cards */
+    .pub-grid {
       display: flex;
       flex-direction: column;
       gap: 0;
     }
 
-    .pub-item {
-      padding: 1.25rem 0;
-      border-bottom: 1px solid var(--rule);
+    .pub-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .pub-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transform: translateY(-1px);
     }
 
-    .pub-item:last-child { border-bottom: none; }
+    .pub-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-venue-badge {
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--blue-soft);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .pub-year {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
 
     .pub-title {
-      font-family: 'Lora', serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 0.97rem;
-      font-weight: 600;
       color: var(--ink);
-      text-decoration: none;
       line-height: 1.4;
-      display: inline;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.4rem;
+      transition: color 0.2s;
     }
-
-    .pub-title:hover { color: var(--accent); }
-
-    a.pub-title { border-bottom: 1px solid transparent; transition: border-color 0.2s, color 0.2s; }
-    a.pub-title:hover { border-color: var(--accent); }
+    .pub-title:hover { color: var(--blue); }
+    span.pub-title { cursor: default; }
+    span.pub-title:hover { color: var(--ink); }
 
     .pub-authors {
-      font-size: 0.875rem;
+      font-size: 0.82rem;
       color: var(--ink-muted);
-      margin-top: 0.25rem;
-      line-height: 1.5;
+      margin-bottom: 0.6rem;
     }
 
-    .pub-venue {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--accent);
-      margin-top: 0.4rem;
-      text-transform: uppercase;
-    }
-
-    .pub-status {
-      font-size: 0.78rem;
+    .pub-status-pill {
+      display: inline-block;
+      font-size: 0.72rem;
       font-weight: 500;
-      font-style: italic;
-      color: var(--ink-muted);
-      margin-left: 0.5rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 20px;
+      background: #fef9ec;
+      color: #92600a;
+      border: 1px solid #f3d98a;
+      margin-bottom: 0.6rem;
     }
 
     .pub-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.6rem;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
     }
 
     .pub-link {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       font-weight: 500;
-      padding: 0.15rem 0.55rem;
-      border-radius: 3px;
-      background: var(--white);
+      padding: 0.18rem 0.6rem;
+      border-radius: 4px;
+      background: var(--cream);
       color: var(--ink-muted);
       text-decoration: none;
       border: 1px solid var(--rule);
       transition: all 0.18s;
     }
-
     .pub-link:hover {
-      background: var(--accent);
+      background: var(--ink);
       color: var(--white);
-      border-color: var(--accent);
+      border-color: var(--ink);
     }
 
-    /* ── Bio ──────────────────────────────────────────────────────────────── */
-    #bio p {
-      max-width: 680px;
-      color: var(--ink-soft);
+    /* Bio */
+    .bio-text p {
       margin-bottom: 1rem;
+      color: var(--ink-soft);
     }
+    .bio-text a { color: var(--blue); text-decoration: none; }
+    .bio-text a:hover { text-decoration: underline; }
 
-    #bio a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-    }
-
-    #bio a:hover { border-color: var(--accent); }
-
-    /* ── Footer ───────────────────────────────────────────────────────────── */
+    /* ── FOOTER ── */
     footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.3);
       text-align: center;
-      padding: 2.5rem 1rem;
+      padding: 2rem 1rem;
       font-size: 0.8rem;
-      color: var(--ink-muted);
-      border-top: 1px solid var(--rule);
+    }
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── SCROLL PROGRESS BAR ── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--gold);
+      z-index: 300;
+      transition: width 0.1s linear;
     }
 
-    footer a { color: var(--ink-muted); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
+    /* ── DARK MODE ── */
+    body.dark-mode {
+      --cream:     #141417;
+      --white:     #1e1e24;
+      --ink:       #e8e8ed;
+      --ink-soft:  #b0b0b8;
+      --ink-muted: #78787f;
+      --rule:      #2e2e36;
+      background: var(--cream);
+      color: var(--ink-soft);
+    }
+    body.dark-mode .sidebar-links a:hover { background: var(--white); }
+    body.dark-mode .pub-card { background: var(--white); border-color: var(--rule); }
+    body.dark-mode .pub-link { background: #2a2a32; border-color: var(--rule); color: var(--ink-soft); }
+    body.dark-mode .topic-btn { background: var(--white); border-color: var(--rule); color: var(--ink-muted); }
+    body.dark-mode .topic-btn.active { background: var(--ink); color: #141417; }
+    body.dark-mode .affil-list li { border-color: var(--rule); }
 
-    /* ── Responsive ───────────────────────────────────────────────────────── */
-    @media (max-width: 640px) {
-      #about {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-photo {
-        width: 130px;
-        height: 180px;
-        margin-top: -0.5rem;
-      }
-
-      #about {
-        display: flex;
-        flex-direction: column-reverse;
-        gap: 1.5rem;
-      }
-
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 0.75rem; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo { width: 140px; height: 186px; }
+      .page-body { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── Navigation ─────────────────────────────────────────────────────────── -->
+<!-- SCROLL PROGRESS -->
+<div id="progress-bar"></div>
+
+<!-- NAV -->
 <nav>
-  <a class="nav-name" href="#about">Robert D. Metcalfe</a>
+  <a class="nav-name" href="#top">Robert D. Metcalfe</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#publications">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
     <li><a href="#working-papers">Working Papers</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#phd-students">Students</a></li>
     <li><a href="#bio">Bio</a></li>
   </ul>
 </nav>
 
-<!-- ── Main ───────────────────────────────────────────────────────────────── -->
-<main>
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-photo-wrap">
+      <img class="hero-photo"
+        src="https://static.wixstatic.com/media/fe9abe_976e33c950044abe86fa0b29d86fcf81~mv2.jpg/v1/crop/x_284,y_0,w_1387,h_1955/fill/w_270,h_380,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/RM%20Picture%20Feb2024_edited.jpg"
+        alt="Professor Robert D. Metcalfe" />
+    </div>
+    <div class="hero-text">
+      <h1 class="hero-name">Robert D. Metcalfe</h1>
+      <p class="hero-title">Professor of International and Public Affairs</p>
+      <p class="hero-institution">SIPA Professorship of Energy Policy &nbsp;·&nbsp; Columbia University</p>
 
-  <!-- About / Hero -->
-  <section id="about">
-    <div class="profile-text">
-      <h1>Robert D. Metcalfe</h1>
-      <p class="title">Professor of International and Public Affairs</p>
-      <p class="institution">SIPA Professorship of Energy Policy · Columbia University</p>
+      <div class="hero-chips">
+        <a class="hero-chip" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_52bce6404f444fe68ddd437960a9c95c.pdf" target="_blank">
+          ↓ Curriculum Vitae
+        </a>
+        <a class="hero-chip" href="https://scholar.google.com/citations?user=s3JP-0oAAAAJ&hl=en" target="_blank">Google Scholar</a>
+        <a class="hero-chip" href="https://ideas.repec.org/e/pme196.html" target="_blank">RePEc</a>
+        <a class="hero-chip" href="https://twitter.com/RDMetcalfe" target="_blank">Twitter / X</a>
+        <a class="hero-chip" href="https://www.linkedin.com/in/rob-metcalfe/" target="_blank">LinkedIn</a>
+        <a class="hero-chip" href="https://bsky.app/profile/rmetcalfe.bsky.social" target="_blank">Bluesky</a>
+        <a class="hero-chip" href="mailto:robert.metcalfe@columbia.edu">Email</a>
+      </div>
 
-      <ul class="affiliations">
-        <li>Affiliated faculty, Department of Economics, Columbia University</li>
-        <li>Co-Editor, <em>Journal of Public Economics</em></li>
-        <li>Associate Editor, <em>Journal of Political Economy: Microeconomics</em></li>
-        <li>Associate Editor, <em>Management Science</em></li>
-        <li>Research Associate, National Bureau of Economic Research (NBER)</li>
-        <li>Chief Economist, Centre for Net Zero, Octopus Energy Group</li>
-        <li>Co-Director, <a href="https://ceep.columbia.edu/">Center for Environmental Economics and Policy</a>, Columbia University</li>
-        <li>Faculty Affiliate, Center for Global Energy Policy</li>
-        <li>Faculty Affiliate, Abdul Latif Jameel Poverty Action Lab (J-PAL)</li>
+      <div class="hero-fields">
+        <span class="hero-field">Applied Microeconomics</span>
+        <span class="hero-field">Environmental &amp; Energy Economics</span>
+        <span class="hero-field">Behavioral &amp; Experimental Economics</span>
+        <span class="hero-field">Labor / Personnel Economics</span>
+        <span class="hero-field">Public Economics</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <p class="sidebar-heading">Editorial Roles</p>
+      <ul class="affil-list">
+        <li>
+          Co-Editor
+          <span class="role">Journal of Public Economics</span>
+        </li>
+        <li>
+          Associate Editor
+          <span class="role">JPE: Microeconomics</span>
+        </li>
+        <li>
+          Associate Editor
+          <span class="role">Management Science</span>
+        </li>
       </ul>
+    </div>
 
-      <div class="links-row">
-        <a class="link-chip" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_52bce6404f444fe68ddd437960a9c95c.pdf" target="_blank">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2h6l3 3v9H4V2zm6 0v3h3"/><path d="M6 7h4M6 9h4M6 11h2"/></svg>
-          Curriculum Vitae
-        </a>
-        <a class="link-chip" href="https://scholar.google.com/citations?user=s3JP-0oAAAAJ&hl=en" target="_blank">
-          <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 7h6M8 4v6"/></svg>
-          Google Scholar
-        </a>
-        <a class="link-chip" href="https://ideas.repec.org/e/pme196.html" target="_blank">
-          <svg viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="3" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 7h6M5 9h4"/></svg>
-          RePEc
-        </a>
-        <a class="link-chip" href="https://twitter.com/RDMetcalfe" target="_blank">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13 3c-.5.7-1.1 1.3-1.8 1.7.5-2.5-2.2-4-4.2-2.5C5.8 3 5 4.5 5.2 6 3.2 5.9 1.4 5 .3 3.5-.3 5.7.8 8 3 9c-.8.1-1.7 0-2.5-.4.3 2 2 3.4 4 3.5-1.5 1.2-3.3 1.5-5 1 2 1.3 4.4 1.5 6.6.7 3.6-1.3 5.8-5 5.4-8.6.5-.5 1-.9 1.5-1.6-.6.3-1.2.4-1.8.4.6-.4 1.1-1 1.3-1.7z"/></svg>
-          Twitter / X
-        </a>
-        <a class="link-chip" href="https://www.linkedin.com/in/rob-metcalfe/" target="_blank">
-          <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 6.5V12M4 4v.5M7 12V9c0-1.1.9-2 2-2s2 .9 2 2v3M7 6.5V12"/></svg>
-          LinkedIn
-        </a>
-        <a class="link-chip" href="https://bsky.app/profile/rmetcalfe.bsky.social" target="_blank">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 3C5 3 2 6 2 8s.5 3 2 4c.5.3 1.2.2 1.5-.3L8 8l2.5 3.7c.3.5 1 .6 1.5.3 1.5-1 2-2.5 2-4S11 3 8 3z"/></svg>
-          Bluesky
-        </a>
-        <a class="link-chip" href="mailto:robert.metcalfe@columbia.edu">
-          <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="3" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1 4l7 5 7-5"/></svg>
-          Email
-        </a>
-      </div>
+    <div class="sidebar-section">
+      <p class="sidebar-heading">Affiliations</p>
+      <ul class="affil-list">
+        <li>
+          Research Associate
+          <span class="role">NBER</span>
+        </li>
+        <li>
+          Chief Economist
+          <span class="role">Centre for Net Zero, Octopus Energy</span>
+        </li>
+        <li>
+          <a href="https://ceep.columbia.edu/" target="_blank">Co-Director, CEEP</a>
+          <span class="role">Columbia University</span>
+        </li>
+        <li>
+          Faculty Affiliate
+          <span class="role">Center for Global Energy Policy</span>
+        </li>
+        <li>
+          Faculty Affiliate
+          <span class="role">J-PAL</span>
+        </li>
+        <li>
+          Affiliated Faculty
+          <span class="role">Dept. of Economics, Columbia</span>
+        </li>
+      </ul>
+    </div>
 
-      <div class="fields" style="margin-top:1.75rem;">
-        <span class="field-tag">Applied Microeconomics</span>
-        <span class="field-tag">Environmental &amp; Energy Economics</span>
-        <span class="field-tag">Behavioral &amp; Experimental Economics</span>
-        <span class="field-tag">Labor / Personnel Economics</span>
-        <span class="field-tag">Public Economics</span>
+    <div class="sidebar-section">
+      <p class="sidebar-heading">Navigate</p>
+      <ul class="sidebar-links">
+        <li><a href="#publications"><span class="dot"></span>Publications</a></li>
+        <li><a href="#working-papers"><span class="dot"></span>Working Papers</a></li>
+        <li><a href="#progress"><span class="dot"></span>Work in Progress</a></li>
+        <li><a href="#teaching"><span class="dot"></span>Teaching</a></li>
+        <li><a href="#phd-students"><span class="dot"></span>PhD Students</a></li>
+        <li><a href="#bio"><span class="dot"></span>Bio</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <style>
+      .topic-filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1.25rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      .topic-btn {
+        font-size: 0.78rem;
+        font-weight: 500;
+        padding: 0.3rem 0.85rem;
+        border-radius: 20px;
+        border: 1px solid var(--rule);
+        background: var(--white);
+        color: var(--ink-muted);
+        cursor: pointer;
+        transition: all 0.18s;
+      }
+      .topic-btn:hover { border-color: var(--blue); color: var(--blue); }
+      .topic-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
+      .topic-count { font-size: 0.7rem; opacity: 0.6; margin-left: 2px; }
+      .pub-card[hidden] { display: none; }
+    </style>
+
+    <div class="topic-filter-bar" id="topic-filters">
+      <button class="topic-btn active" data-cat="all" onclick="filterPubs('all')">All</button>
+      <button class="topic-btn" data-cat="energy" onclick="filterPubs('energy')">Energy &amp; Environment <span class="topic-count">(12)</span></button>
+      <button class="topic-btn" data-cat="behavioral" onclick="filterPubs('behavioral')">Behavioral Economics <span class="topic-count">(7)</span></button>
+      <button class="topic-btn" data-cat="public" onclick="filterPubs('public')">Public Economics <span class="topic-count">(9)</span></button>
+      <button class="topic-btn" data-cat="management" onclick="filterPubs('management')">Management <span class="topic-count">(4)</span></button>
+      <button class="topic-btn" data-cat="tech" onclick="filterPubs('tech')">Technology &amp; AI <span class="topic-count">(3)</span></button>
+    </div>
+
+    <script>
+      function filterPubs(cat) {
+        document.querySelectorAll('#topic-filters .topic-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+        document.querySelectorAll('.pub-card[data-cat]').forEach(card => {
+          card.hidden = cat !== 'all' && card.dataset.cat !== cat;
+        });
+        document.querySelectorAll('.section-heading-wrap').forEach(h => {
+          if (cat === 'all') { h.hidden = false; return; }
+          const next = h.nextElementSibling;
+          const grid = next && next.classList.contains('pub-grid') ? next : null;
+          if (grid) {
+            const visible = Array.from(grid.querySelectorAll('.pub-card[data-cat]')).some(c => !c.hidden);
+            h.hidden = !visible;
+          }
+        });
+      }
+    </script>
+
+    <!-- Publications -->
+    <div class="content-section" id="publications">
+      <p class="section-label section-heading-wrap">Selected Publications</p>
+      <div class="pub-grid">
+
+        <div class="pub-card" data-cat="management">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">J. Political Economy</span>
+            <span class="pub-year">Forthcoming</span>
+          </div>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_029f90039c1f4097979116c41d3c2173.pdf" target="_blank">Management and Productivity in Retail</a>
+          <p class="pub-authors">Metcalfe, R., Sollaci, A., Syverson, C.</p>
+        </div>
+
+        <div class="pub-card" data-cat="energy">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">American Economic Review</span>
+            <span class="pub-year">Forthcoming</span>
+          </div>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_b52be42212a64f37b14a8fb31d353ab6.pdf" target="_blank">A Welfare Analysis of Policies Impacting Climate Change</a>
+          <p class="pub-authors">Hahn, R., Hendren, N., Metcalfe, R., Sprung-Keyser, B.</p>
+          <div class="pub-links">
+            <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_a341a9ba82d84f1dada3d6a2893d4d34.pdf" target="_blank">Full Appendix</a>
+          </div>
+        </div>
+
+        <div class="pub-card" data-cat="energy">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">Review of Economic Studies</span>
+            <span class="pub-year">2026</span>
+          </div>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_67fc4fad63c14099863ca03221f58ff2.pdf" target="_blank">Do the Effects of Social Nudges Persist? Theory and Evidence from 38 Natural Field Experiments in Energy Conservation</a>
+          <p class="pub-authors">Brandon, A., Ferraro, P., List, J., Metcalfe, R., Price, M., Rundhammer, F.</p>
+        </div>
+
+        <div class="pub-card" data-cat="behavioral">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">J. Public Economics</span>
+            <span class="pub-year">2026</span>
+          </div>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_9906ce94d9394c09bde7960a0a393f5b.pdf" target="_blank">Race and Redistribution in the United States: An Experimental Analysis</a>
+          <p class="pub-authors">Akesson, J., Hahn, R., Metcalfe, R., Rasooly, I.</p>
+        </div>
+
+        <div class="pub-card" data-cat="behavioral">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">Management Science</span>
+            <span class="pub-year">2023</span>
+          </div>
+          <a class="pub-title" href="https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2022.4645" target="_blank">Nudging Timely Wage Reporting: Field Experimental Evidence from the U.S. SSI Program</a>
+          <p class="pub-authors">Zhang, C.Y., Hemmeter, J., Kessler, J.B., Metcalfe, R., Weathers, R.</p>
+          <div class="pub-links">
+            <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_c6f88c33b6ab4bada9cb7740b85f7c6b.pdf" target="_blank">Ungated PDF</a>
+          </div>
+        </div>
+
+        <div class="pub-card" data-cat="behavioral">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">American Economic Review</span>
+            <span class="pub-year">2022</span>
+          </div>
+          <a class="pub-title" href="https://www.aeaweb.org/articles?id=10.1257/aer.20190433" target="_blank">Measuring the Welfare Effects of Shame and Pride</a>
+          <p class="pub-authors">Butera, L., Morrison, W., Metcalfe, R., Taubinsky, D.</p>
+          <div class="pub-links">
+            <a class="pub-link" href="https://drive.google.com/file/d/19stQGlJ5cY3GZbrlHF5F-7Ur-QSOemcB/view" target="_blank">Ungated PDF</a>
+            <a class="pub-link" href="https://drive.google.com/file/d/1LULBAupRN7UZytKf-KB9AZ8__j75VFVs/view" target="_blank">Slides</a>
+          </div>
+        </div>
+
+        <div class="pub-card" data-cat="behavioral">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">J. Risk and Uncertainty</span>
+            <span class="pub-year">2022</span>
+          </div>
+          <a class="pub-title" href="https://www.nber.org/papers/w27245" target="_blank">Fatalism, Beliefs, and Behaviors During the COVID-19 Pandemic</a>
+          <p class="pub-authors">Akesson, J., Ashworth-Hayes, S., Hahn, R., Metcalfe R., Rasooly, I.</p>
+        </div>
+
+        <div class="pub-card" data-cat="energy">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">American Economic Review</span>
+            <span class="pub-year">2021</span>
+          </div>
+          <a class="pub-title" href="https://www.aeaweb.org/articles?id=10.1257/aer.20180441" target="_blank">Efficiency and Equity Impacts of Energy Subsidies</a>
+          <p class="pub-authors">Hahn, R., Metcalfe, R.</p>
+          <div class="pub-links">
+            <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_1583a214bff0434aa5610b6eb09e3c30.pdf" target="_blank">Ungated PDF</a>
+            <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_368c268ae2f449a0b57d8f8ad740d7b1.pdf" target="_blank">Slides</a>
+          </div>
+        </div>
+
+        <div class="pub-card" data-cat="public">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">Economics of Education Review</span>
+            <span class="pub-year">2021</span>
+          </div>
+          <a class="pub-title" href="https://www.sciencedirect.com/science/article/abs/pii/S0272775721001102" target="_blank">Understanding the Response to Financial and Non-financial Incentives in Education</a>
+          <p class="pub-authors">Burgess, S., Metcalfe, R., Sadoff, S.</p>
+          <div class="pub-links">
+            <a class="pub-link" href="https://ideas.repec.org/p/bri/uobdis/16-678.html" target="_blank">Ungated PDF</a>
+          </div>
+        </div>
+
+        <div class="pub-card" data-cat="management">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">J. Political Economy</span>
+            <span class="pub-year">2020 · Lead Article</span>
+          </div>
+          <a class="pub-title" href="https://www.journals.uchicago.edu/doi/abs/10.1086/705375" target="_blank">The Impact of Management Practices on Employee Productivity: A Field Experiment with Airline Captains</a>
+          <p class="pub-authors">Gosnell, G., List, J., Metcalfe, R.</p>
+          <div class="pub-links">
+            <a class="pub-link" href="https://hbr.org/2016/08/virgin-atlantic-tested-3-ways-to-change-employee-behavior" target="_blank">Harvard Business Review</a>
+            <a class="pub-link" href="https://drive.google.com/file/d/1Vb_qUn3moSb6A0B_pEvoFCCPC0wuDFDx/view" target="_blank">Ungated PDF</a>
+            <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_3897f841d44f4cd7b93f2a2bfbd9496e.pptx" target="_blank">Slides</a>
+          </div>
+        </div>
+
+        <div class="pub-card" data-cat="energy">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">PNAS</span>
+            <span class="pub-year">2019</span>
+          </div>
+          <a class="pub-title" href="http://www.pnas.org/content/early/2018/08/07/1802874115" target="_blank">Testing for Crowd Out in Social Nudges: Evidence from a Natural Field Experiment in the Market for Electricity</a>
+          <p class="pub-authors">Brandon, A., List, J., Metcalfe, R., Price, M., Rundhammer, F.</p>
+        </div>
+
+        <div class="pub-card" data-cat="public">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">J. Public Economics</span>
+            <span class="pub-year">2019</span>
+          </div>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_d7181a02d655413a97d115d21e02261f.pdf" target="_blank">Quantifying the Intangible Impact of the Olympics Using Subjective Well-Being Data</a>
+          <p class="pub-authors">Dolan, P., Kavetsos, G., Krekel, C., Mavridis, D., Metcalfe, R., Senik, S., Szymanski, S., Ziebarth, N.</p>
+        </div>
+
+        <div class="pub-card" data-cat="public">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">J. Public Economics</span>
+            <span class="pub-year">2019</span>
+          </div>
+          <a class="pub-title" href="https://www.sciencedirect.com/science/article/pii/S0047272718302330" target="_blank">Students' Effort and Educational Achievement: Using the Timing of the World Cup to Vary the Value of Leisure</a>
+          <p class="pub-authors">Metcalfe, R., Burgess, S., Proud, S.</p>
+        </div>
+
+        <div class="pub-card" data-cat="behavioral">
+          <div class="pub-card-top">
+            <span class="pub-venue-badge">J. Public Economics</span>
+            <span class="pub-year">2017</span>
+          </div>
+          <a class="pub-title" href="https://www.sciencedirect.com/science/article/pii/S0047272717300166" target="_blank">The Behavioralist as Tax Collector: Using Natural Field Experiments to Enhance Tax Compliance</a>
+          <p class="pub-authors">Hallsworth, M., List, J., Metcalfe, R., Vlaev, I.</p>
+        </div>
+
       </div>
     </div>
 
-    <img
-      class="profile-photo"
-      src="https://static.wixstatic.com/media/fe9abe_976e33c950044abe86fa0b29d86fcf81~mv2.jpg/v1/crop/x_284,y_0,w_1387,h_1955/fill/w_270,h_380,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/RM%20Picture%20Feb2024_edited.jpg"
-      alt="Professor Robert D. Metcalfe"
-    />
-  </section>
+    <!-- Working Papers -->
+    <div class="content-section" id="working-papers">
+      <p class="section-label section-heading-wrap">Working Papers</p>
+      <div class="pub-grid">
 
-  <!-- Publications -->
-  <section id="publications">
-    <h2 class="section-heading">Selected Publications</h2>
-    <div class="pub-list">
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_029f90039c1f4097979116c41d3c2173.pdf" target="_blank">Management and Productivity in Retail</a>
-        <p class="pub-authors">Metcalfe, R., Sollaci, A., Syverson, C.</p>
-        <div>
-          <span class="pub-venue">Journal of Political Economy</span>
-          <span class="pub-status">Forthcoming</span>
+        <div class="pub-card" data-cat="energy">
+          <span class="pub-status-pill">R&amp;R · American Economic Review</span>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_9b03bb5bf42a4c91aedbd2a1df155c8a.pdf" target="_blank">Expecting Climate Change: Evidence from a Nationwide Field Experiment in the Housing Market</a>
+          <p class="pub-authors">Fairweather, D., Kahn, M., Metcalfe, R., Sandoval-Olascoaga, S.</p>
         </div>
-      </div>
 
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_b52be42212a64f37b14a8fb31d353ab6.pdf" target="_blank">A Welfare Analysis of Policies Impacting Climate Change</a>
-        <p class="pub-authors">Hahn, R., Hendren, N., Metcalfe, R., Sprung-Keyser, B.</p>
-        <div>
-          <span class="pub-venue">American Economic Review</span>
-          <span class="pub-status">Forthcoming</span>
+        <div class="pub-card" data-cat="public">
+          <span class="pub-status-pill">Conditionally Accepted · AEJ: Economic Policy</span>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_7e6ef4b42936492ea6f1aaaff5c194cb.pdf" target="_blank">The Value of Time in the United States: Estimates from Nationwide Natural Field Experiments</a>
+          <p class="pub-authors">Goldszmidt, A., List, J., Metcalfe, R., Muir, I., Smith, K., Wang, J.</p>
         </div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_a341a9ba82d84f1dada3d6a2893d4d34.pdf" target="_blank">Full Appendix</a>
+
+        <div class="pub-card" data-cat="tech">
+          <span class="pub-status-pill">R&amp;R · AEJ: Economic Policy</span>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_27e0ec9bac0a430bad0b737c9976544d.pdf" target="_blank">The Human Perils of Scaling Smart Technologies: Evidence from Field Experiments</a>
+          <p class="pub-authors">Brandon, A., Clapp, C., List, J., Metcalfe, R., Price, M.</p>
         </div>
-      </div>
 
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_67fc4fad63c14099863ca03221f58ff2.pdf" target="_blank">Do the Effects of Social Nudges Persist? Theory and Evidence from 38 Natural Field Experiments in Energy Conservation</a>
-        <p class="pub-authors">Brandon, A., Ferraro, P., List, J., Metcalfe, R., Price, M., Rundhammer, F.</p>
-        <div>
-          <span class="pub-venue">Review of Economic Studies</span>
-          <span class="pub-status">2026</span>
+        <div class="pub-card" data-cat="energy">
+          <span class="pub-status-pill">R&amp;R · AEJ: Economic Policy</span>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_2abc93c62f4b4f30843d1035c09cdfb9.pdf" target="_blank">Decarbonizing Heat: The Impact of Heat Pumps and a Time-of-Use Heat Pump Tariff on Energy Demand</a>
+          <p class="pub-authors">Bernard, L., Hackett, A., Metcalfe, R., Schein, A.</p>
+          <div class="pub-links">
+            <a class="pub-link" href="https://cdn.sanity.io/files/lrxd4jqj/production/409144fe0a115c2fb6f96459ed9a276b30e68ad2.pdf" target="_blank">Executive Summary</a>
+          </div>
         </div>
-      </div>
 
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_9906ce94d9394c09bde7960a0a393f5b.pdf" target="_blank">Race and Redistribution in the United States: An Experimental Analysis</a>
-        <p class="pub-authors">Akesson, J., Hahn, R., Metcalfe, R., Rasooly, I.</p>
-        <div>
-          <span class="pub-venue">Journal of Public Economics</span>
-          <span class="pub-status">2026</span>
+        <div class="pub-card" data-cat="energy">
+          <span class="pub-status-pill">R&amp;R · AEJ: Economic Policy</span>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_13221339497e4ef49dc8ebc5efba6942.pdf" target="_blank">Making the Invisible Visible: The Impacts of Revealing Indoor Air Pollution on Behavior and Welfare</a>
+          <p class="pub-authors">Metcalfe, R., Roth, S.</p>
         </div>
-      </div>
 
-      <div class="pub-item">
-        <a class="pub-title" href="https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2022.4645" target="_blank">Nudging Timely Wage Reporting: Field Experimental Evidence from the U.S. SSI Program</a>
-        <p class="pub-authors">Zhang, C.Y., Hemmeter, J., Kessler, J.B., Metcalfe, R., Weathers, R.</p>
-        <div>
-          <span class="pub-venue">Management Science</span>
-          <span class="pub-status">2023</span>
+        <div class="pub-card" data-cat="energy">
+          <span class="pub-status-pill">Conditionally Accepted · Economic Journal</span>
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_bfdc0364bbfb48a1bf39917448dffb03.pdf" target="_blank">Do Water Audits Work?</a>
+          <p class="pub-authors">Akesson, J., Hahn, R., Kochhar, R., Metcalfe, R.</p>
         </div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_c6f88c33b6ab4bada9cb7740b85f7c6b.pdf" target="_blank">Ungated PDF</a>
+
+        <div class="pub-card" data-cat="energy">
+          <span class="pub-status-pill">R&amp;R · J. Environmental Economics and Management</span>
+          <span class="pub-title">Smart Meters: Do Their Prices Matter to Their Adoption and Do They Save Energy?</span>
+          <p class="pub-authors">List, J., Metcalfe, R., Price, M.</p>
         </div>
-      </div>
 
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.aeaweb.org/articles?id=10.1257/aer.20190433" target="_blank">Measuring the Welfare Effects of Shame and Pride</a>
-        <p class="pub-authors">Butera, L., Morrison, W., Metcalfe, R., Taubinsky, D.</p>
-        <div>
-          <span class="pub-venue">American Economic Review</span>
-          <span class="pub-status">2022</span>
+        <div class="pub-card" data-cat="energy">
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_19d6e0c32e0e45178827fb3cefd9ca1f.pdf" target="_blank">The Impact of Dynamic Prices on Electric Vehicle Public Charging Demand: Evidence from a Nationwide Natural Field Experiment</a>
+          <p class="pub-authors">Bernard, L., Hackett, A., Metcalfe, R., Panzone, L., Schein, A.</p>
         </div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://drive.google.com/file/d/19stQGlJ5cY3GZbrlHF5F-7Ur-QSOemcB/view" target="_blank">Ungated PDF</a>
-          <a class="pub-link" href="https://drive.google.com/file/d/1LULBAupRN7UZytKf-KB9AZ8__j75VFVs/view" target="_blank">Slides</a>
+
+        <div class="pub-card" data-cat="tech">
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_7205f38a2b434b348df8171b528de777.pdf" target="_blank">AI in Charge: Large-Scale Experimental Evidence on Electric Vehicle Charging Demand</a>
+          <p class="pub-authors">Metcalfe, R., Simpson, C., Schein, A., Sun, Y.</p>
         </div>
-      </div>
 
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.nber.org/papers/w27245" target="_blank">Fatalism, Beliefs, and Behaviors During the COVID-19 Pandemic</a>
-        <p class="pub-authors">Akesson, J., Ashworth-Hayes, S., Hahn, R., Metcalfe R., Rasooly, I.</p>
-        <div>
-          <span class="pub-venue">Journal of Risk and Uncertainty</span>
-          <span class="pub-status">2022</span>
+        <div class="pub-card" data-cat="management">
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_957d3d8f46c842438041303aaa856cd7.pdf" target="_blank">Proposed Mergers Where Efficiencies Are Needed Most Might Be the Least Likely to Deliver Them</a>
+          <p class="pub-authors">Metcalfe, R., Sollaci, A., Syverson, C.</p>
         </div>
-      </div>
 
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.aeaweb.org/articles?id=10.1257/aer.20180441" target="_blank">Efficiency and Equity Impacts of Energy Subsidies</a>
-        <p class="pub-authors">Hahn, R., Metcalfe, R.</p>
-        <div>
-          <span class="pub-venue">American Economic Review</span>
-          <span class="pub-status">2021</span>
+        <div class="pub-card" data-cat="public">
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_c59606b608f7453c8adeb94e0d724fe5.pdf" target="_blank">Welfare Effects of Shifting Public Transit Demand</a>
+          <p class="pub-authors">Hahn, R., Metcalfe, R., Tam, E.</p>
         </div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_1583a214bff0434aa5610b6eb09e3c30.pdf" target="_blank">Ungated PDF</a>
-          <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_368c268ae2f449a0b57d8f8ad740d7b1.pdf" target="_blank">Slides</a>
+
+        <div class="pub-card" data-cat="public">
+          <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_73ac6468349b4821b962c3b210d001cf.pdf" target="_blank">The Impact of Fake Reviews on Demand and Welfare</a>
+          <p class="pub-authors">Akesson, J., Hahn, R., Metcalfe, R., Monti-Nussbaum, M.</p>
         </div>
-      </div>
 
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.sciencedirect.com/science/article/abs/pii/S0272775721001102" target="_blank">Understanding the Response to Financial and Non-financial Incentives in Education: Field Experimental Evidence using High-stakes Assessments</a>
-        <p class="pub-authors">Burgess, S., Metcalfe, R., Sadoff, S.</p>
-        <div>
-          <span class="pub-venue">Economics of Education Review</span>
-          <span class="pub-status">2021</span>
+        <div class="pub-card" data-cat="tech">
+          <a class="pub-title" href="http://www.nber.org/papers/w22627" target="_blank">Using Big Data to Estimate Consumer Surplus: The Case of Uber</a>
+          <p class="pub-authors">Cohen, P., Hahn, R., Hall, J., Metcalfe, R., Levitt, S.</p>
         </div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://ideas.repec.org/p/bri/uobdis/16-678.html" target="_blank">Ungated PDF</a>
+
+        <div class="pub-card" data-cat="energy">
+          <a class="pub-title" href="https://www.nber.org/papers/w23355" target="_blank">Harnessing Policy Complementarities to Conserve Energy: Evidence from a Natural Field Experiment</a>
+          <p class="pub-authors">List, J., Metcalfe, R., Price, M., Rundhammer, F.</p>
         </div>
+
       </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.journals.uchicago.edu/doi/abs/10.1086/705375" target="_blank">The Impact of Management Practices on Employee Productivity: A Field Experiment with Airline Captains</a>
-        <p class="pub-authors">Gosnell, G., List, J., Metcalfe, R.</p>
-        <div>
-          <span class="pub-venue">Journal of Political Economy</span>
-          <span class="pub-status">2020 · Lead Article</span>
-        </div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://hbr.org/2016/08/virgin-atlantic-tested-3-ways-to-change-employee-behavior" target="_blank">Harvard Business Review</a>
-          <a class="pub-link" href="https://drive.google.com/file/d/1Vb_qUn3moSb6A0B_pEvoFCCPC0wuDFDx/view?usp=sharing" target="_blank">Ungated PDF</a>
-          <a class="pub-link" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_3897f841d44f4cd7b93f2a2bfbd9496e.pptx" target="_blank">Slides</a>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="http://www.pnas.org/content/early/2018/08/07/1802874115" target="_blank">Testing for Crowd Out in Social Nudges: Evidence from a Natural Field Experiment in the Market for Electricity</a>
-        <p class="pub-authors">Brandon, A., List, J., Metcalfe, R., Price, M., Rundhammer, F.</p>
-        <div>
-          <span class="pub-venue">PNAS</span>
-          <span class="pub-status">2019</span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_d7181a02d655413a97d115d21e02261f.pdf" target="_blank">Quantifying the Intangible Impact of the Olympics Using Subjective Well-Being Data</a>
-        <p class="pub-authors">Dolan, P., Kavetsos, G., Krekel, C., Mavridis, D., Metcalfe, R., Senik, S., Szymanski, S., Ziebarth, N.</p>
-        <div>
-          <span class="pub-venue">Journal of Public Economics</span>
-          <span class="pub-status">2019</span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.sciencedirect.com/science/article/pii/S0047272718302330" target="_blank">Students' Effort and Educational Achievement: Using the Timing of the World Cup to Vary the Value of Leisure</a>
-        <p class="pub-authors">Metcalfe, R., Burgess, S., Proud, S.</p>
-        <div>
-          <span class="pub-venue">Journal of Public Economics</span>
-          <span class="pub-status">2019</span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.sciencedirect.com/science/article/pii/S0047272717300166" target="_blank">The Behavioralist as Tax Collector: Using Natural Field Experiments to Enhance Tax Compliance</a>
-        <p class="pub-authors">Hallsworth, M., List, J., Metcalfe, R., Vlaev, I.</p>
-        <div>
-          <span class="pub-venue">Journal of Public Economics</span>
-          <span class="pub-status">2017</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Working Papers -->
-  <section id="working-papers">
-    <h2 class="section-heading">Working Papers</h2>
-    <div class="pub-list">
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_9b03bb5bf42a4c91aedbd2a1df155c8a.pdf" target="_blank">Expecting Climate Change: Evidence from a Nationwide Field Experiment in the Housing Market</a>
-        <p class="pub-authors">Fairweather, D., Kahn, M., Metcalfe, R., Sandoval-Olascoaga, S.</p>
-        <div>
-          <span class="pub-status" style="color:var(--accent);font-style:normal;font-weight:500;">Revise &amp; resubmit — <em>American Economic Review</em></span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_7e6ef4b42936492ea6f1aaaff5c194cb.pdf" target="_blank">The Value of Time in the United States: Estimates from Nationwide Natural Field Experiments</a>
-        <p class="pub-authors">Goldszmidt, A., List, J., Metcalfe, R., Muir, I., Smith, K., Wang, J.</p>
-        <div>
-          <span class="pub-status" style="color:var(--accent);font-style:normal;font-weight:500;">Conditionally accepted — <em>American Economic Journal: Economic Policy</em></span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_27e0ec9bac0a430bad0b737c9976544d.pdf" target="_blank">The Human Perils of Scaling Smart Technologies: Evidence from Field Experiments</a>
-        <p class="pub-authors">Brandon, A., Clapp, C., List, J., Metcalfe, R., Price, M.</p>
-        <div>
-          <span class="pub-status" style="color:var(--accent);font-style:normal;font-weight:500;">Revise &amp; resubmit — <em>American Economic Journal: Economic Policy</em></span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_2abc93c62f4b4f30843d1035c09cdfb9.pdf" target="_blank">Decarbonizing Heat: The Impact of Heat Pumps and a Time-of-Use Heat Pump Tariff on Energy Demand</a>
-        <p class="pub-authors">Bernard, L., Hackett, A., Metcalfe, R., Schein, A.</p>
-        <div>
-          <span class="pub-status" style="color:var(--accent);font-style:normal;font-weight:500;">Revise &amp; resubmit — <em>American Economic Journal: Economic Policy</em></span>
-        </div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://cdn.sanity.io/files/lrxd4jqj/production/409144fe0a115c2fb6f96459ed9a276b30e68ad2.pdf" target="_blank">Executive Summary</a>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_13221339497e4ef49dc8ebc5efba6942.pdf" target="_blank">Making the Invisible Visible: The Impacts of Revealing Indoor Air Pollution on Behavior and Welfare</a>
-        <p class="pub-authors">Metcalfe, R., Roth, S.</p>
-        <div>
-          <span class="pub-status" style="color:var(--accent);font-style:normal;font-weight:500;">Revise &amp; resubmit — <em>American Economic Journal: Economic Policy</em></span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_bfdc0364bbfb48a1bf39917448dffb03.pdf" target="_blank">Do Water Audits Work?</a>
-        <p class="pub-authors">Akesson, J., Hahn, R., Kochhar, R., Metcalfe, R.</p>
-        <div>
-          <span class="pub-status" style="color:var(--accent);font-style:normal;font-weight:500;">Conditionally accepted — <em>Economic Journal</em></span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-title">Smart Meters: Do Their Prices Matter to Their Adoption and Do They Save Energy?</span>
-        <p class="pub-authors">List, J., Metcalfe, R., Price, M.</p>
-        <div>
-          <span class="pub-status" style="color:var(--accent);font-style:normal;font-weight:500;">Revise &amp; resubmit — <em>Journal of Environmental Economics and Management</em></span>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_19d6e0c32e0e45178827fb3cefd9ca1f.pdf" target="_blank">The Impact of Dynamic Prices on Electric Vehicle Public Charging Demand: Evidence from a Nationwide Natural Field Experiment</a>
-        <p class="pub-authors">Bernard, L., Hackett, A., Metcalfe, R., Panzone, L., Schein, A.</p>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_7205f38a2b434b348df8171b528de777.pdf" target="_blank">AI in Charge: Large-Scale Experimental Evidence on Electric Vehicle Charging Demand</a>
-        <p class="pub-authors">Metcalfe, R., Simpson, C., Schein, A., Sun, Y.</p>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_957d3d8f46c842438041303aaa856cd7.pdf" target="_blank">Proposed Mergers Where Efficiencies Are Needed Most Might Be the Least Likely to Deliver Them</a>
-        <p class="pub-authors">Metcalfe, R., Sollaci, A., Syverson, C.</p>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_c59606b608f7453c8adeb94e0d724fe5.pdf" target="_blank">Welfare Effects of Shifting Public Transit Demand</a>
-        <p class="pub-authors">Hahn, R., Metcalfe, R., Tam, E.</p>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.rmetcalfe.net/_files/ugd/fe9abe_73ac6468349b4821b962c3b210d001cf.pdf" target="_blank">The Impact of Fake Reviews on Demand and Welfare</a>
-        <p class="pub-authors">Akesson, J., Hahn, R., Metcalfe, R., Monti-Nussbaum, M.</p>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="http://www.nber.org/papers/w22627" target="_blank">Using Big Data to Estimate Consumer Surplus: The Case of Uber</a>
-        <p class="pub-authors">Cohen, P., Hahn, R., Hall, J., Metcalfe, R., Levitt, S.</p>
-      </div>
-
-      <div class="pub-item">
-        <a class="pub-title" href="https://www.nber.org/papers/w23355" target="_blank">Harnessing Policy Complementarities to Conserve Energy: Evidence from a Natural Field Experiment</a>
-        <p class="pub-authors">List, J., Metcalfe, R., Price, M., Rundhammer, F.</p>
-      </div>
-
     </div>
 
     <!-- Work in Progress -->
-    <h2 class="section-heading" style="margin-top:3rem;">Work in Progress</h2>
-    <div class="pub-list">
+    <div class="content-section" id="progress">
+      <p class="section-label section-heading-wrap">Work in Progress</p>
+      <div class="pub-grid">
 
-      <div class="pub-item">
-        <span class="pub-title">Measuring Large-Scale Energy Demand Flexibility: Evidence from a Nationwide Natural Field Experiment</span>
-        <p class="pub-authors">Bernard, L., Metcalfe, R., Schein, A.</p>
+        <div class="pub-card" data-cat="energy">
+          <span class="pub-title">Measuring Large-Scale Energy Demand Flexibility: Evidence from a Nationwide Natural Field Experiment</span>
+          <p class="pub-authors">Bernard, L., Metcalfe, R., Schein, A.</p>
+        </div>
+
+        <div class="pub-card" data-cat="energy">
+          <span class="pub-title">A Demand-Side Alternative to Renewable Curtailment: Natural Field Experimental Evidence from Two Countries</span>
+          <p class="pub-authors">Lopez, D., Metcalfe, R., Schein, A., Sun, Y.</p>
+        </div>
+
+        <div class="pub-card" data-cat="energy">
+          <span class="pub-title">The Impact of Solar and Battery on Energy Demand: Evidence from a Nationwide Natural Field Experiment</span>
+          <p class="pub-authors">Metcalfe, R., Schein, A., Sun, Y.</p>
+        </div>
+
+        <div class="pub-card" data-cat="behavioral">
+          <span class="pub-title">Information Frequency, Cognition, and Risk: A Natural Field Experiment with Professional Traders</span>
+          <p class="pub-authors">Larson, F., List, J., Metcalfe, R., Rodemeier, M.</p>
+        </div>
+
+        <div class="pub-card" data-cat="public">
+          <span class="pub-title">Inside the Brokers: Evidence from Real Estate</span>
+          <p class="pub-authors">Fairweather, D., Metcalfe, R., Nguyen, T.M.A.</p>
+        </div>
+
+        <div class="pub-card" data-cat="management">
+          <span class="pub-title">Impact of Management on Maritime Productivity and Emissions</span>
+          <p class="pub-authors">Du, X., Metcalfe, R.</p>
+        </div>
+
+        <div class="pub-card" data-cat="behavioral">
+          <span class="pub-title">Are Bad Social Norms Good?</span>
+          <p class="pub-authors">Akesson, J., Conti, R., Hahn, R., Metcalfe, R., Rasooly, I.</p>
+        </div>
+
       </div>
-
-      <div class="pub-item">
-        <span class="pub-title">A Demand-Side Alternative to Renewable Curtailment: Natural Field Experimental Evidence from Two Countries</span>
-        <p class="pub-authors">Lopez, D., Metcalfe, R., Schein, A., Sun, Y.</p>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-title">The Impact of Solar and Battery on Energy Demand: Evidence from a Nationwide Natural Field Experiment</span>
-        <p class="pub-authors">Metcalfe, R., Schein, A., Sun, Y.</p>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-title">Information Frequency, Cognition, and Risk: A Natural Field Experiment with Professional Traders</span>
-        <p class="pub-authors">Larson, F., List, J., Metcalfe, R., Rodemeier, M.</p>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-title">Inside the Brokers: Evidence from Real Estate</span>
-        <p class="pub-authors">Fairweather, D., Metcalfe, R., Nguyen, T.M.A.</p>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-title">Impact of Management on Maritime Productivity and Emissions</span>
-        <p class="pub-authors">Du, X., Metcalfe, R.</p>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-title">Are Bad Social Norms Good?</span>
-        <p class="pub-authors">Akesson, J., Conti, R., Hahn, R., Metcalfe, R., Rasooly, I.</p>
-      </div>
-
     </div>
-  </section>
 
-  <!-- Bio -->
-  <section id="bio">
-    <h2 class="section-heading">Bio</h2>
-    <p>
-      I have previously worked at the University of Chicago, University of Southern California, Boston University, and University of Oxford. I have also previously worked in the U.K. Government as an Economist, and had a short-term position as a Fellow at the Social and Behavioral Sciences Team at the Office of Science and Technology Policy, Office of the U.S. President.
-    </p>
-    <p>
-      I completed my Ph.D. at Imperial College London, M.Sc. at the London School of Economics, and B.A. at the University of Wales, Swansea. I grew up in a working class family and neighborhood in Swansea, United Kingdom, and am a first-generation college graduate.
-    </p>
-    <p>
-      I am also co-founder of two companies: <a href="http://www.thebehaviouralist.com/" target="_blank">The Behavioralist</a> and <a href="https://signol.io/" target="_blank">Signol</a>.
-    </p>
-  </section>
+    <!-- Teaching -->
+    <div class="content-section" id="teaching">
+      <p class="section-label">Teaching</p>
+      <div class="pub-card" style="display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+        <div>
+          <div style="font-family:'DM Serif Display',serif; font-size:0.97rem; color:var(--ink); margin-bottom:0.25rem;">The Economics of Energy</div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">Masters level · Columbia University, SIPA</div>
+        </div>
+        <a class="pub-link" href="https://robertmetcalfe.github.io/website/EnergyEconSyllabus" target="_blank" style="flex-shrink:0;">Syllabus</a>
+      </div>
+      <div class="pub-card" style="display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+        <div>
+          <div style="font-family:'DM Serif Display',serif; font-size:0.97rem; color:var(--ink); margin-bottom:0.25rem;">Experimental Economics</div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">PhD level · Columbia University, Economics &amp; SIPA</div>
+        </div>
+        <a class="pub-link" href="https://robertmetcalfe.github.io/website/ExperimentalEconSyllabus.pdf" target="_blank" style="flex-shrink:0;">Syllabus</a>
+      </div>
+    </div>
 
-</main>
+    <!-- PhD Students -->
+    <div class="content-section" id="phd-students">
+      <p class="section-label">PhD Students</p>
 
-<!-- ── Footer ──────────────────────────────────────────────────────────────── -->
+      <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:0.75rem;">Current</div>
+      <div style="display:flex; flex-direction:column; gap:0; margin-bottom:2rem;">
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Clara Berestycki</span>
+          <span style="color:var(--ink-muted); font-size:0.82rem;">Columbia SIPA</span>
+        </div>
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Fanyu Wang</span>
+          <span style="color:var(--ink-muted); font-size:0.82rem;">Columbia SIPA</span>
+        </div>
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Charlie Hutchinson</span>
+          <span style="color:var(--ink-muted); font-size:0.82rem;">UCLA</span>
+        </div>
+
+        <div style="padding:0.75rem 0; display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Andrew Schein</span>
+          <span style="color:var(--ink-muted); font-size:0.82rem;">LSE</span>
+        </div>
+
+      </div>
+
+      <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:0.75rem;">Placed</div>
+      <div style="display:flex; flex-direction:column; gap:0;">
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Hannah Farkas</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">Columbia SIPA, 2026</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">Duke post-doc → McMaster AP</div>
+        </div>
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Anna Papp</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">Columbia SIPA, 2025</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">MIT Econ post-doc → UCSB Bren AP</div>
+        </div>
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Francesco Gabriele</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">USC, 2025</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">HKUST AP</div>
+        </div>
+
+        <div style="padding:0.75rem 0; display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Ruozi Song</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">USC, 2023</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">World Bank Research Group, Research Economist</div>
+        </div>
+
+      </div>
+
+      <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:0.75rem; margin-top:2rem;">Pre-doctoral Students</div>
+      <div style="display:flex; flex-direction:column; gap:0;">
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Navya Kumar</span>
+          <span style="color:var(--ink-muted); font-size:0.82rem;">Columbia SIPA, 2024–</span>
+        </div>
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Lukas Puschnig</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">USC, 2023–2024</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">LMU Munich PhD</div>
+        </div>
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Lillian Bartholomew</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">USC, 2022–2024</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">RAND PhD</div>
+        </div>
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Xidi Zhang</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">USC, 2022–2024</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">University of Notre Dame PhD</div>
+        </div>
+
+        <div style="padding:0.75rem 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Zhihan Liu</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">USC, 2022–2023</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">USC PhD</div>
+        </div>
+
+        <div style="padding:0.75rem 0; display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span style="font-weight:500; color:var(--ink); font-size:0.92rem;">Victor Mylonas</span>
+            <span style="color:var(--ink-muted); font-size:0.82rem; margin-left:0.5rem;">USC, 2021–2022</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--ink-muted);">IMF</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bio -->
+    <div class="content-section" id="bio">
+      <p class="section-label">Bio</p>
+      <div class="bio-text">
+        <p>I have previously worked at the University of Chicago, University of Southern California, Boston University, and University of Oxford. I have also previously worked in the U.K. Government as an Economist, and had a short-term position as a Fellow at the Social and Behavioral Sciences Team at the Office of Science and Technology Policy, Office of the U.S. President.</p>
+        <p>I completed my Ph.D. at Imperial College London, M.Sc. at the London School of Economics, and B.A. at the University of Wales, Swansea. I grew up in a working class family and neighborhood in Swansea, United Kingdom, and am a first-generation college graduate.</p>
+        <p>I am also co-founder of two companies: <a href="http://www.thebehaviouralist.com/" target="_blank">The Behavioralist</a> and <a href="https://signol.io/" target="_blank">Signol</a>.</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+
+</script>
+
+<!-- FOOTER -->
 <footer>
-  <p>Robert D. Metcalfe · Columbia University · <a href="mailto:robert.metcalfe@columbia.edu">robert.metcalfe@columbia.edu</a></p>
+  <p>Robert D. Metcalfe &nbsp;·&nbsp; Columbia University &nbsp;·&nbsp; <a href="mailto:robert.metcalfe@columbia.edu">robert.metcalfe@columbia.edu</a></p>
 </footer>
 
 </body>
