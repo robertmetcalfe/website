@@ -73,6 +73,26 @@
     .nav-links a:hover { color: var(--gold); }
     .nav-links a.nav-active { color: var(--white); }
 
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
     /* ── HERO ── */
     .hero {
       background: var(--dark);
@@ -449,6 +469,30 @@
       .hero-photo { width: 140px; height: 186px; }
       .page-body { grid-template-columns: 1fr; }
       .sidebar { position: static; }
+
+      /* Mobile nav */
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 56px;
+        left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(15,17,23,0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 0.5rem 0 1rem;
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+      }
     }
   </style>
 </head>
@@ -460,7 +504,10 @@
 <!-- NAV -->
 <nav>
   <a class="nav-name" href="#top">Robert D. Metcalfe</a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#publications">Publications</a></li>
     <li><a href="#working-papers">Working Papers</a></li>
     <li><a href="#teaching">Teaching</a></li>
@@ -1067,6 +1114,12 @@
 </div>
 
 <script>
+  // Mobile hamburger toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinksEl = document.getElementById('nav-links');
+  navToggle.addEventListener('click', () => navLinksEl.classList.toggle('open'));
+  navLinksEl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinksEl.classList.remove('open')));
+
   // Active nav highlighting
   (function() {
     const sections = ['publications', 'working-papers', 'progress', 'teaching', 'phd-students', 'bio'];
