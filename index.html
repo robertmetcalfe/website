@@ -71,6 +71,7 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--gold); }
+    .nav-links a.nav-active { color: var(--white); }
 
     /* ── HERO ── */
     .hero {
@@ -531,6 +532,10 @@
       <p class="sidebar-heading">Affiliations</p>
       <ul class="affil-list">
         <li>
+          Affiliated Faculty
+          <span class="role">Dept. of Economics, Columbia</span>
+        </li>
+        <li>
           Research Associate
           <span class="role">NBER</span>
         </li>
@@ -549,10 +554,6 @@
         <li>
           Faculty Affiliate
           <span class="role">J-PAL</span>
-        </li>
-        <li>
-          Affiliated Faculty
-          <span class="role">Dept. of Economics, Columbia</span>
         </li>
       </ul>
     </div>
@@ -601,9 +602,9 @@
 
     <div class="topic-filter-bar" id="topic-filters">
       <button class="topic-btn active" data-cat="all" onclick="filterPubs('all')">All</button>
-      <button class="topic-btn" data-cat="energy" onclick="filterPubs('energy')">Energy &amp; Environment <span class="topic-count">(12)</span></button>
-      <button class="topic-btn" data-cat="behavioral" onclick="filterPubs('behavioral')">Behavioral Economics <span class="topic-count">(7)</span></button>
-      <button class="topic-btn" data-cat="public" onclick="filterPubs('public')">Public Economics <span class="topic-count">(9)</span></button>
+      <button class="topic-btn" data-cat="energy" onclick="filterPubs('energy')">Energy &amp; Environment <span class="topic-count">(14)</span></button>
+      <button class="topic-btn" data-cat="behavioral" onclick="filterPubs('behavioral')">Behavioral Economics <span class="topic-count">(6)</span></button>
+      <button class="topic-btn" data-cat="public" onclick="filterPubs('public')">Public Economics <span class="topic-count">(7)</span></button>
       <button class="topic-btn" data-cat="management" onclick="filterPubs('management')">Management <span class="topic-count">(4)</span></button>
       <button class="topic-btn" data-cat="tech" onclick="filterPubs('tech')">Technology &amp; AI <span class="topic-count">(3)</span></button>
     </div>
@@ -1065,6 +1066,39 @@
 </div>
 
 <script>
+  // Active nav highlighting
+  (function() {
+    const sections = ['publications', 'working-papers', 'progress', 'teaching', 'phd-students', 'bio'];
+    const navMap = {
+      'publications': 'publications',
+      'working-papers': 'working-papers',
+      'progress': 'working-papers',
+      'teaching': 'teaching',
+      'phd-students': 'phd-students',
+      'bio': 'bio'
+    };
+    const navLinks = {};
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      const id = a.getAttribute('href').replace('#', '');
+      navLinks[id] = a;
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const mappedId = navMap[entry.target.id];
+          Object.values(navLinks).forEach(a => a.classList.remove('nav-active'));
+          if (navLinks[mappedId]) navLinks[mappedId].classList.add('nav-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  })();
+
   // Scroll progress bar
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
