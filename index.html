@@ -649,7 +649,7 @@
 
     <div class="topic-filter-bar" id="topic-filters">
       <button class="topic-btn active" data-cat="all" onclick="filterPubs('all')">All</button>
-      <button class="topic-btn" data-cat="energy" onclick="filterPubs('energy')">Energy &amp; Environment <span class="topic-count">(14)</span></button>
+      <button class="topic-btn" data-cat="energy" onclick="filterPubs('energy')">Energy &amp; Environment <span class="topic-count">(15)</span></button>
       <button class="topic-btn" data-cat="behavioral" onclick="filterPubs('behavioral')">Behavioral Economics <span class="topic-count">(7)</span></button>
       <button class="topic-btn" data-cat="public" onclick="filterPubs('public')">Public Economics <span class="topic-count">(7)</span></button>
       <button class="topic-btn" data-cat="management" onclick="filterPubs('management')">Management <span class="topic-count">(4)</span></button>
@@ -660,7 +660,7 @@
       function filterPubs(cat) {
         document.querySelectorAll('#topic-filters .topic-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
         document.querySelectorAll('.pub-card[data-cat]').forEach(card => {
-          card.hidden = cat !== 'all' && card.dataset.cat !== cat;
+          card.hidden = cat !== 'all' && !card.dataset.cat.split(' ').includes(cat);
         });
         document.querySelectorAll('.section-heading-wrap').forEach(h => {
           if (cat === 'all') { h.hidden = false; return; }
@@ -782,7 +782,7 @@
           </div>
         </div>
 
-        <div class="pub-card" data-cat="management">
+        <div class="pub-card" data-cat="management energy">
           <div class="pub-card-top">
             <span class="pub-venue-badge">J. Political Economy</span>
             <span class="pub-year">2020 · Lead Article</span>
