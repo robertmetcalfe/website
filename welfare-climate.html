@@ -622,6 +622,49 @@
     .citation-doi a { color: var(--blue); text-decoration: none; }
     .citation-doi a:hover { text-decoration: underline; }
 
+    /* ── CONTRIBUTE ── */
+    .contribute-section {
+      background: var(--forest-bg);
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .contribute-inner {
+      max-width: var(--col-w);
+      margin: 0 auto;
+    }
+    .contribute-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .contribute-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1rem;
+    }
+    .contribute-link {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      transition: background 0.18s, color 0.18s;
+    }
+    .contribute-link:hover {
+      background: var(--gold);
+      color: var(--forest-bg);
+    }
+
     /* ── FOOTER ── */
     footer {
       text-align: center;
@@ -1269,6 +1312,15 @@
       <em>American Economic Review</em> 116, no. 7 (2026): 2368–2421.
     </p>
     <p class="citation-doi">DOI: <a href="https://doi.org/10.1257/aer.20250166" target="_blank">10.1257/aer.20250166</a></p>
+  </div>
+</div>
+
+<!-- CONTRIBUTE -->
+<div class="contribute-section">
+  <div class="contribute-inner">
+    <p class="contribute-label">Get Involved</p>
+    <p class="contribute-text">Have your own MVPF calculations? Add your policy estimates to the Policy Impact Library — a public database of welfare analyses that researchers and policymakers can build on.</p>
+    <a class="contribute-link" href="https://policyimpacts.org/" target="_blank">Visit policyimpacts.org →</a>
   </div>
 </div>
 
