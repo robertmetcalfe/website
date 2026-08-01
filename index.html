@@ -645,6 +645,111 @@
       .topic-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
       .topic-count { font-size: 0.7rem; opacity: 0.6; margin-left: 2px; }
       .pub-card[hidden] { display: none; }
+
+      /* ── EXPANDABLE CARDS ── */
+      .pub-card--expandable .pub-expand-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.75rem;
+        font-size: 0.73rem;
+        font-weight: 500;
+        color: var(--blue);
+        cursor: pointer;
+        user-select: none;
+        border: none;
+        background: none;
+        padding: 0;
+        font-family: inherit;
+      }
+      .pub-expand-trigger svg {
+        transition: transform 0.25s ease;
+        flex-shrink: 0;
+      }
+      .pub-card--expandable.open .pub-expand-trigger svg {
+        transform: rotate(180deg);
+      }
+      .pub-expand-body {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.32s ease, opacity 0.28s ease;
+        opacity: 0;
+      }
+      .pub-card--expandable.open .pub-expand-body {
+        grid-template-rows: 1fr;
+        opacity: 1;
+      }
+      .pub-expand-inner { overflow: hidden; }
+      .pub-expand-divider {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0.9rem 0;
+      }
+      .pub-expand-label {
+        font-size: 0.64rem;
+        font-weight: 600;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        margin-bottom: 0.5rem;
+      }
+      .pub-abstract-text {
+        font-size: 0.82rem;
+        line-height: 1.68;
+        color: var(--ink-soft);
+      }
+      .pub-figure-wrap {
+        margin: 0.9rem 0 0;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #f0ede8;
+        border: 1px solid var(--rule);
+        text-align: center;
+      }
+      .pub-figure-wrap img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .pub-figure-placeholder {
+        padding: 2rem;
+        font-size: 0.78rem;
+        color: var(--ink-muted);
+      }
+      .pub-bibtex-wrap {
+        position: relative;
+        margin-top: 0.5rem;
+      }
+      .pub-bibtex {
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+        font-size: 0.7rem;
+        line-height: 1.55;
+        background: #f0ede8;
+        border-radius: 6px;
+        padding: 0.85rem 0.85rem 0.85rem;
+        white-space: pre;
+        overflow-x: auto;
+        color: var(--ink-soft);
+        margin: 0;
+        display: block;
+      }
+      .pub-copy-btn {
+        position: absolute;
+        top: 0.45rem;
+        right: 0.45rem;
+        font-size: 0.67rem;
+        font-weight: 500;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        border: 1px solid var(--rule);
+        background: white;
+        color: var(--ink-muted);
+        cursor: pointer;
+        transition: all 0.15s;
+        font-family: inherit;
+      }
+      .pub-copy-btn:hover { border-color: var(--blue); color: var(--blue); }
+      .pub-copy-btn.copied { border-color: #16a34a; color: #16a34a; background: #f0fdf4; }
     </style>
 
     <div class="topic-filter-bar" id="topic-filters">
@@ -688,7 +793,7 @@
           <p class="pub-authors">Metcalfe, R., Sollaci, A., Syverson, C.</p>
         </div>
 
-        <div class="pub-card" data-cat="energy">
+        <div class="pub-card pub-card--expandable" data-cat="energy">
           <div class="pub-card-top">
             <span class="pub-venue-badge">American Economic Review</span>
             <span class="pub-year">2026 · Lead Article</span>
@@ -699,6 +804,36 @@
             <a class="pub-link" href="https://rmetcalfe.net/HahnHendrenMetcalfeSprungKeyser_WelfareAnalysisPoliciesClimateChange.pdf" target="_blank">Ungated PDF</a>
             <a class="pub-link" href="https://static.wixstatic.com/ugd/fe9abe_a341a9ba82d84f1dada3d6a2893d4d34.pdf" target="_blank">Full Appendix</a>
             <a class="pub-link" href="https://rmetcalfe.net/HahnHendrenMetcalfeSprungKeyser_WelfareAnalysisPoliciesClimateChange_Slides.pdf" target="_blank">Slides</a>
+          </div>
+          <button class="pub-expand-trigger" onclick="toggleCard(this)">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Abstract &amp; Citation
+          </button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider">
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">We study the welfare impacts of 96 climate-related tax and spending policies. We extend and apply the marginal value of public funds (MVPF) framework, most notably providing a new method for incorporating learning-by-doing spillovers. We find subsidies for the production of clean energy (such as wind production tax credits) have higher MVPFs than all other subsidies in our sample, including EV subsidies. Conservation nudges have large MVPFs when targeting regions with dirty grids. Fuel taxes and cap-and-trade policies are highly efficient means of raising revenue. We also construct traditional cost-per-ton estimates and compare and contrast the lessons they provide.</p>
+              <div class="pub-figure-wrap">
+                <div class="pub-figure-placeholder">📊 Upload a key figure from this paper here</div>
+              </div>
+              <hr class="pub-expand-divider">
+              <p class="pub-expand-label">BibTeX Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bibtex-welfare-climate">@article{hahn2026welfare,
+  title   = {A Welfare Analysis of Policies Impacting Climate Change},
+  author  = {Hahn, Robert W. and Hendren, Nathaniel and
+             Metcalfe, Robert D. and Sprung-Keyser, Ben},
+  journal = {American Economic Review},
+  volume  = {116},
+  number  = {7},
+  pages   = {2368--2421},
+  year    = {2026},
+  doi     = {10.1257/aer.20250166}
+}</pre>
+                <button class="pub-copy-btn" onclick="copyBibtex(event, 'bibtex-welfare-climate', this)">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1169,6 +1304,24 @@
       if (el) observer.observe(el);
     });
   })();
+
+  // Expandable paper cards
+  function toggleCard(trigger) {
+    const card = trigger.closest('.pub-card--expandable');
+    const open = card.classList.toggle('open');
+    trigger.innerHTML = open
+      ? '<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 7.5l4-4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Close'
+      : '<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation';
+  }
+
+  function copyBibtex(e, id, btn) {
+    e.stopPropagation();
+    navigator.clipboard.writeText(document.getElementById(id).textContent).then(() => {
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy BibTeX'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
 
   // Scroll progress bar
   window.addEventListener('scroll', () => {
