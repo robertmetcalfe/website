@@ -797,6 +797,31 @@
   </div>
 </div>
 
+<!-- ── COUNTRY ELIGIBILITY EXPLORER ── -->
+<div class="explorer-section reveal">
+  <div class="explorer-inner">
+    <p class="explorer-title">Interactive · Global Context</p>
+    <h2 class="explorer-heading">Where is demand turn-up most needed?</h2>
+    <p class="explorer-sub">Countries with high renewable penetration and many negative-price hours have the most to gain. Click a row to see the situation in each market.</p>
+
+    <table class="explorer-table">
+      <thead>
+        <tr>
+          <th>Country / Region</th>
+          <th>Renewable share</th>
+          <th>Negative-price hours/yr</th>
+          <th>DTU readiness</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="explorer-tbody">
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+    <p class="explorer-note">* Estimates are approximate and based on 2023–2024 data. Negative-price hours vary significantly year to year with weather and generation mix.</p>
+  </div>
+</div>
+
 <!-- ── EVIDENCE ── -->
 <div class="section-gap" id="evidence"></div>
 <div class="price-section reveal">
@@ -891,11 +916,11 @@
           <div class="compare-stat-sub">demand increase with free electricity</div>
         </div>
         <div class="compare-stat">
-          <div class="compare-stat-val" style="font-size:1.4rem">Temporal shift</div>
-          <div class="compare-stat-sub">consumption moved from adjacent hours</div>
+          <div class="compare-stat-val" style="font-size:1.4rem">Primarily temporal shift</div>
+          <div class="compare-stat-sub">consumption largely moved from adjacent hours — though this varies by treatment</div>
         </div>
         <div class="compare-note">
-          <strong>What this means:</strong> GB customers largely shifted consumption <em>into</em> the event window from hours before or after — not new electricity use. This reallocation can still reduce carbon intensity and grid costs if the shifted hours were higher-emissions.
+          <strong>What this means:</strong> At the free-electricity price point, GB customers largely shifted consumption <em>into</em> the event window from hours before or after, rather than creating genuinely new demand. This pattern is not uniform across treatments, however: at the 50% discount price, we find evidence of demand creation rather than pure shifting. The distinction matters for policy — load-shifting participants avoid paying levies on the electricity they consume during events, which has implications for how DTU interacts with levy exemption design.
         </div>
       </div>
       <div class="compare-card">
@@ -918,31 +943,6 @@
     <div class="pull-quote" style="margin-top:2rem">
       "The key wedge is between the retail price consumers face and the near-zero local cost of otherwise-curtailed generation."
     </div>
-  </div>
-</div>
-
-<!-- ── FEATURE 4: COUNTRY ELIGIBILITY EXPLORER ── -->
-<div class="explorer-section reveal">
-  <div class="explorer-inner">
-    <p class="explorer-title">Interactive · Global Context</p>
-    <h2 class="explorer-heading">Where is demand turn-up most needed?</h2>
-    <p class="explorer-sub">Countries with high renewable penetration and many negative-price hours have the most to gain. Click a row to see the situation in each market.</p>
-
-    <table class="explorer-table">
-      <thead>
-        <tr>
-          <th>Country / Region</th>
-          <th>Renewable share</th>
-          <th>Negative-price hours/yr</th>
-          <th>DTU readiness</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="explorer-tbody">
-        <!-- Filled by JS -->
-      </tbody>
-    </table>
-    <p class="explorer-note">* Estimates are approximate and based on 2023–2024 data. Negative-price hours vary significantly year to year with weather and generation mix.</p>
   </div>
 </div>
 
@@ -998,7 +998,7 @@
       </div>
       <div class="welfare-card">
         <div class="welfare-card-num">£0.77</div>
-        <div class="welfare-card-label">per kWh of induced demand (opt-in NPG trial) vs £1.22 in the non-targeted approach</div>
+        <div class="welfare-card-label">per kWh of induced demand in the opt-in trial vs £1.22 in the non-targeted approach</div>
       </div>
     </div>
 
@@ -1029,7 +1029,7 @@
       </div>
       <div class="impl-item">
         <span class="impl-num">02</span>
-        <p class="impl-text"><strong>The NPG opt-in design was more cost-effective.</strong> When customers sign up in advance, payments go only to those who actually change behavior — cutting cost per kWh of induced demand from £1.22 to £0.77. Targeted programs beat broad non-targeted ones on cost-effectiveness.</p>
+        <p class="impl-text"><strong>An opt-in design was more cost-effective.</strong> One arm of the trial (run with Northern Powergrid in Scotland) required customers to sign up in advance. Because payments went only to those who actually changed behavior, cost per kWh of induced demand fell from £1.22 to £0.77. Targeted opt-in programmes beat broad non-targeted ones on cost-effectiveness.</p>
       </div>
       <div class="impl-item">
         <span class="impl-num">03</span>
