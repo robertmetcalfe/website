@@ -1002,40 +1002,6 @@
       </div>
     </div>
 
-    <!-- FEATURE 5: PERSONAL EARNINGS CALCULATOR -->
-    <div class="calc-box">
-      <h3 class="calc-heading">How much could you earn?</h3>
-      <p class="calc-sub">Based on the experimental data, estimate your personal benefit from participating in a free-electricity event. Assumes a 1-hour event with a 15p/kWh payment (GB NPG opt-in trial design).</p>
-
-      <div class="calc-options">
-        <label class="calc-opt">
-          <select id="calc-size">
-            <option value="small">Small home</option>
-            <option value="medium" selected>Medium home</option>
-            <option value="large">Large home</option>
-          </select>
-          &nbsp;Home size
-        </label>
-        <label class="calc-opt">
-          <input type="checkbox" id="calc-ev"> Electric vehicle
-        </label>
-        <label class="calc-opt">
-          <input type="checkbox" id="calc-solar"> Rooftop solar
-        </label>
-        <label class="calc-opt">
-          <input type="checkbox" id="calc-smart"> Smart appliances
-        </label>
-      </div>
-
-      <div class="calc-result-row">
-        <div class="calc-earn" id="calc-earn">£0.26</div>
-        <div class="calc-earn-label">per event &nbsp;·&nbsp; <span id="calc-annual">£2.60</span> per year (10 events)</div>
-      </div>
-      <div class="calc-breakdown" id="calc-breakdown">
-        0.105 kW demand response · 0.105 kWh per event · electricity value: £0.026 · payment: £0.016 · plus saving of £0.21 on usual bill
-      </div>
-    </div>
-
     <div class="welfare-insight">
       <strong>Finding 1:</strong> The welfare gain from DTU is invariant to whether curtailment is compensated. Institutional design only affects who gets the surplus — not whether surplus exists.
     </div>
@@ -1359,42 +1325,6 @@ if (tbody) {
   });
 }
 
-// ── FEATURE 5: PERSONAL CALCULATOR ──────────────────────────────────
-const BASE_KW = { small: 0.07, medium: 0.105, large: 0.14 };
-
-function updateCalc() {
-  const size   = document.getElementById('calc-size').value;
-  const hasEv  = document.getElementById('calc-ev').checked;
-  const hasSol = document.getElementById('calc-solar').checked;
-  const hasSmart = document.getElementById('calc-smart').checked;
-
-  let kw = BASE_KW[size];
-  if (hasEv)    kw += 0.075;
-  if (hasSol)   kw += 0.045;
-  if (hasSmart) kw += 0.025;
-
-  const kwhPerEvent = kw;                           // 1-hour event
-  const electricitySaving = kwhPerEvent * 0.25;     // 25p/kWh retail avoided
-  const paymentEarned = kwhPerEvent * 0.15;         // 15p/kWh NPG payment
-  const totalPerEvent = electricitySaving + paymentEarned;
-  const totalPerYear  = totalPerEvent * 10;
-
-  document.getElementById('calc-earn').textContent = '£' + totalPerEvent.toFixed(2);
-  document.getElementById('calc-annual').textContent = '£' + totalPerYear.toFixed(2);
-
-  const parts = [`${kw.toFixed(3)} kW demand response`];
-  if (hasEv)    parts.push('+0.075 kW EV charging boost');
-  if (hasSol)   parts.push('+0.045 kW solar self-consumption');
-  if (hasSmart) parts.push('+0.025 kW smart appliances');
-  parts.push(`${kwhPerEvent.toFixed(3)} kWh absorbed · electricity saving: £${electricitySaving.toFixed(3)} · payment earned: £${paymentEarned.toFixed(3)}`);
-
-  document.getElementById('calc-breakdown').textContent = parts.join(' · ');
-}
-
-['calc-size','calc-ev','calc-solar','calc-smart'].forEach(id => {
-  document.getElementById(id).addEventListener('change', updateCalc);
-});
-updateCalc();
 </script>
 </body>
 </html>
