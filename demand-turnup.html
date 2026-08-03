@@ -91,6 +91,12 @@
     font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
     color: var(--teal); text-transform: uppercase; margin-bottom: 1.2rem;
   }
+  .hero-label a {
+    color: var(--teal); text-decoration: none;
+    border-bottom: 1px solid currentColor; padding-bottom: 1px;
+    transition: opacity 0.15s;
+  }
+  .hero-label a:hover { opacity: 0.65; }
   .hero h1 {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2.4rem, 6vw, 4rem);
@@ -442,7 +448,7 @@
 <!-- ── HERO ── -->
 <div id="top"></div>
 <section class="hero reveal">
-  <p class="hero-label">Natural Field Experiment · Great Britain & Spain</p>
+  <p class="hero-label">Natural Field Experiment · <a href="https://www.centrefornetzero.org/papers/mobilising-electricity-demand-in-periods-of-renewable-abundance" target="_blank">Centre for Net Zero</a> · Great Britain &amp; Spain</p>
   <h1>What if we paid people to <em>use</em> more electricity?</h1>
   <p class="hero-meta">
     Lopez Garcia · Metcalfe · Schein · Sun &nbsp;·&nbsp; July 2026 &nbsp;·&nbsp; Working Paper
