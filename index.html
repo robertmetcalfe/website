@@ -734,8 +734,10 @@
         background: #f0ede8;
         border-radius: 6px;
         padding: 0.85rem 0.85rem 0.85rem;
-        white-space: pre;
+        white-space: pre-wrap;
+        word-break: break-word;
         overflow-x: auto;
+        padding-top: 2.1rem;
         color: var(--ink-soft);
         margin: 0;
         display: block;
@@ -792,16 +794,34 @@
       <p class="section-label section-heading-wrap">Selected Publications</p>
       <div class="pub-grid">
 
-        <div class="pub-card" data-cat="management">
+        <div class="pub-card pub-card--expandable" data-cat="management">
           <div class="pub-card-top">
             <span class="pub-venue-badge">J. Political Economy</span>
             <span class="pub-year">Forthcoming</span>
           </div>
           <a class="pub-title" href="https://rmetcalfe.net/MetcalfeSollacySyverson_ManagementProductivityRetail.pdf" target="_blank">Management and Productivity in Retail</a>
           <p class="pub-authors">Metcalfe, R., Sollaci, A., Syverson, C.</p>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">In many sectors, research has established that management explains a significant portion of productivity differences across organizations. A remaining question, however, is whether it is managers themselves or firm-wide management practices that matter. We shed light on this question by analyzing store-level data from two multibillion-dollar retail companies. In this setting, managers move between stores, but management practices are set by firm policy and store attributes are largely fixed, allowing us to isolate managers’ personal roles in determining store performance. We have three high-level findings: (i) managers affect and explain 25–35% of the variance of store-level productivity; (ii) negative assortative matching between managers and stores, which may reflect both firms’ decisions and a selection-driven bias that we characterize as novel and argue might apply in other settings using AKM-style movers designs; and (iii) moving from a below median to an above median manager raises store-level productivity by around 10% after several months.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-metcalfe-retail">@article{metcalfe_management_retail,
+  author  = {Metcalfe, Robert D. and Sollaci, Alexandre and Syverson, Chad},
+  title   = {Management and Productivity in Retail},
+  journal = {Journal of Political Economy},
+  note    = {Forthcoming}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-metcalfe-retail', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="pub-card" data-cat="energy">
+        <div class="pub-card pub-card--expandable" data-cat="energy">
           <div class="pub-card-top">
             <span class="pub-venue-badge">American Economic Review</span>
             <span class="pub-year">2026 · Lead Article</span>
@@ -814,9 +834,31 @@
             <a class="pub-link" href="https://rmetcalfe.net/HahnHendrenMetcalfeSprungKeyser_WelfareAnalysisPoliciesClimateChange_Slides.pdf" target="_blank">Slides</a>
             <a class="pub-link" href="https://rmetcalfe.net/welfare-climate.html" target="_blank">✦ Interactive Page</a>
           </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">We study the welfare impacts of 96 climate-related tax and spending policies. We extend and apply the marginal value of public funds (MVPF) framework, most notably providing a new method for incorporating learning-by-doing spillovers. We find subsidies for the production of clean energy (such as wind production tax credits) have higher MVPFs than all other subsidies in our sample, including EV subsidies. Conservation nudges have large MVPFs when targeting regions with dirty grids. Fuel taxes and cap-and-trade policies are highly efficient means of raising revenue. We also construct traditional cost-per-ton estimates and compare and contrast the lessons they provide.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-hahn-welfare-climate">@article{hahn_welfare_climate_2026,
+  author  = {Hahn, Robert W. and Hendren, Nathaniel and Metcalfe, Robert D. and Sprung-Keyser, Ben},
+  title   = {A Welfare Analysis of Policies Impacting Climate Change},
+  journal = {American Economic Review},
+  year    = {2026},
+  volume  = {116},
+  number  = {7},
+  pages   = {2368--2421},
+  doi     = {10.1257/aer.20250166}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-hahn-welfare-climate', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="pub-card" data-cat="energy">
+        <div class="pub-card pub-card--expandable" data-cat="energy">
           <div class="pub-card-top">
             <span class="pub-venue-badge">Review of Economic Studies</span>
             <span class="pub-year">2026</span>
@@ -825,6 +867,25 @@
           <p class="pub-authors">Brandon, A., Ferraro, P., List, J., Metcalfe, R., Price, M., Rundhammer, F.</p>
           <div class="pub-links">
             <a class="pub-link" href="https://rmetcalfe.net/BrandonFerraroListMetcalfePriceRundhammer_NudgesPersist.pdf" target="_blank">Ungated PDF</a>
+          </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">We formalize a research design to uncover the mechanisms underlying long-term reductions in energy consumption caused by a widely implemented nudge. We consider two channels: technology adoption and habit formation. Using data from 38 natural field experiments, we isolate the role of technology adoption by comparing treatment and control homes after the initial resident moves, which discontinues the treatment for a home. We find that fully half of energy reductions persist in the home after treatment ends and show this persistence is consonant with a technology adoption channel. The role of technology in creating persistent behavior change has important implications for designing behavioral interventions and evaluating their long-term social impacts.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-brandon-nudges-persist">@article{brandon_nudges_persist_2026,
+  author  = {Brandon, Alec and Ferraro, Paul J. and List, John A. and Metcalfe, Robert D. and Price, Michael K. and Rundhammer, Florian},
+  title   = {Do the Effects of Nudges Persist? Theory and Evidence from 38 Natural Field Experiments},
+  journal = {Review of Economic Studies},
+  year    = {2026},
+  doi     = {10.1093/restud/rdag012}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-brandon-nudges-persist', this)">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -840,7 +901,7 @@
           </div>
         </div>
 
-        <div class="pub-card" data-cat="behavioral">
+        <div class="pub-card pub-card--expandable" data-cat="behavioral">
           <div class="pub-card-top">
             <span class="pub-venue-badge">J. Public Economics</span>
             <span class="pub-year">2026</span>
@@ -850,9 +911,30 @@
           <div class="pub-links">
             <a class="pub-link" href="https://static.wixstatic.com/ugd/fe9abe_9906ce94d9394c09bde7960a0a393f5b.pdf" target="_blank">Ungated PDF</a>
           </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Scholars have suggested that White American support for welfare is influenced by their beliefs about the racial composition of welfare recipients. In this paper, we test this hypothesis using two experiments (n=9,775) that induce random variation in participants’ beliefs about the racial distribution of welfare recipients. In both experiments, we obtain evidence that exogenously increasing beliefs about the share of welfare recipients who are Black reduces support for welfare. We also use our experiments to study the effect of ‘priming’ participants to think about race, the accuracy of beliefs about the racial distribution of welfare recipients, and the mechanisms that underpin our results.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-akesson-race-redistribution">@article{akesson_race_redistribution_2026,
+  author  = {Akesson, Jesper and Hahn, Robert W. and Metcalfe, Robert D. and Rasooly, Itzhak},
+  title   = {Race and Redistribution in the United States: An Experimental Analysis},
+  journal = {Journal of Public Economics},
+  year    = {2026},
+  volume  = {255},
+  pages   = {105555},
+  doi     = {10.1016/j.jpubeco.2025.105555}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-akesson-race-redistribution', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="pub-card" data-cat="behavioral">
+        <div class="pub-card pub-card--expandable" data-cat="behavioral">
           <div class="pub-card-top">
             <span class="pub-venue-badge">Management Science</span>
             <span class="pub-year">2023</span>
@@ -862,9 +944,31 @@
           <div class="pub-links">
             <a class="pub-link" href="https://static.wixstatic.com/ugd/fe9abe_c6f88c33b6ab4bada9cb7740b85f7c6b.pdf" target="_blank">Ungated PDF</a>
           </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">We study a large-scale (n = 50,000) natural field experiment implemented by the U.S. Social Security Administration aimed at increasing the timely and accurate self-reporting of wages by Supplemental Security Income (SSI) recipients. A letter reminding SSI recipients of their wage reporting responsibilities significantly increased both the likelihood of reporting any earnings and the total earnings reported. However, the specific letter content—providing social information or highlighting the salience of penalties—had no systematic effect. We develop a conservative estimate that the letters generated roughly $5.91 in savings per dollar spent, highlighting the value of such a nudge in this important context.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-zhang-wage-reporting">@article{zhang_wage_reporting_2023,
+  author  = {Zhang, C. Yiwei and Hemmeter, Jeffrey and Kessler, Judd B. and Metcalfe, Robert D. and Weathers, Robert},
+  title   = {Nudging Timely Wage Reporting: Field Experimental Evidence from the U.S. Supplemental Security Income Program},
+  journal = {Management Science},
+  year    = {2023},
+  volume  = {69},
+  number  = {3},
+  pages   = {1341--1353},
+  doi     = {10.1287/mnsc.2022.4645}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-zhang-wage-reporting', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="pub-card" data-cat="behavioral">
+        <div class="pub-card pub-card--expandable" data-cat="behavioral">
           <div class="pub-card-top">
             <span class="pub-venue-badge">American Economic Review</span>
             <span class="pub-year">2022</span>
@@ -874,6 +978,28 @@
           <div class="pub-links">
             <a class="pub-link" href="https://drive.google.com/file/d/19stQGlJ5cY3GZbrlHF5F-7Ur-QSOemcB/view" target="_blank">Ungated PDF</a>
             <a class="pub-link" href="https://drive.google.com/file/d/1LULBAupRN7UZytKf-KB9AZ8__j75VFVs/view" target="_blank">Slides</a>
+          </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Public recognition is frequently used to motivate desirable behavior, yet its welfare effects—such as costs of shame or gains from pride—are rarely measured. We develop a portable empirical methodology for measuring and monetizing social image utility, and we deploy it in experiments on exercise and charitable behavior. In all experiments, public recognition motivates desirable behavior but creates highly unequal image payoffs. High-performing individuals enjoy significant utility gains, while low-performing individuals incur significant utility losses. We estimate structural models of social signaling, and we use the models to explore the social efficiency of public recognition policies.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-butera-shame-pride">@article{butera_shame_pride_2022,
+  author  = {Butera, Luigi and Metcalfe, Robert and Morrison, William and Taubinsky, Dmitry},
+  title   = {Measuring the Welfare Effects of Shame and Pride},
+  journal = {American Economic Review},
+  year    = {2022},
+  volume  = {112},
+  number  = {1},
+  pages   = {122--68},
+  doi     = {10.1257/aer.20190433}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-butera-shame-pride', this)">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -886,7 +1012,7 @@
           <p class="pub-authors">Akesson, J., Ashworth-Hayes, S., Hahn, R., Metcalfe R., Rasooly, I.</p>
         </div>
 
-        <div class="pub-card" data-cat="energy">
+        <div class="pub-card pub-card--expandable" data-cat="energy">
           <div class="pub-card-top">
             <span class="pub-venue-badge">American Economic Review</span>
             <span class="pub-year">2021</span>
@@ -896,6 +1022,28 @@
           <div class="pub-links">
             <a class="pub-link" href="https://static.wixstatic.com/ugd/fe9abe_1583a214bff0434aa5610b6eb09e3c30.pdf" target="_blank">Ungated PDF</a>
             <a class="pub-link" href="https://static.wixstatic.com/ugd/fe9abe_368c268ae2f449a0b57d8f8ad740d7b1.pdf" target="_blank">Slides</a>
+          </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Economic theory suggests that energy subsidies can lead to excessive consumption and environmental degradation. However, the precise impact of energy subsidies is not well understood. We analyze a large energy subsidy: the California Alternate Rates for Energy (CARE). CARE provides a price reduction for low-income consumers of natural gas and electricity. Using a natural field experiment, we estimate the price elasticity of demand for natural gas to be about −0.35 for CARE customers. An economic model of this subsidy yields three results. First, the natural gas subsidy appears to reduce welfare. Second, the economic impact of various policies, such as cap-and-trade, depends on whether prices for various customers move closer to the marginal social cost. Third, benefits to CARE customers need to increase by 6 percent to offset the costs of the program.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-hahn-energy-subsidies">@article{hahn_energy_subsidies_2021,
+  author  = {Hahn, Robert W. and Metcalfe, Robert D.},
+  title   = {Efficiency and Equity Impacts of Energy Subsidies},
+  journal = {American Economic Review},
+  year    = {2021},
+  volume  = {111},
+  number  = {5},
+  pages   = {1658--88},
+  doi     = {10.1257/aer.20180441}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-hahn-energy-subsidies', this)">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -911,7 +1059,7 @@
           </div>
         </div>
 
-        <div class="pub-card" data-cat="management energy">
+        <div class="pub-card pub-card--expandable" data-cat="management energy">
           <div class="pub-card-top">
             <span class="pub-venue-badge">J. Political Economy</span>
             <span class="pub-year">2020 · Lead Article</span>
@@ -922,6 +1070,28 @@
             <a class="pub-link" href="https://hbr.org/2016/08/virgin-atlantic-tested-3-ways-to-change-employee-behavior" target="_blank">Harvard Business Review</a>
             <a class="pub-link" href="https://drive.google.com/file/d/1Vb_qUn3moSb6A0B_pEvoFCCPC0wuDFDx/view" target="_blank">Ungated PDF</a>
             <a class="pub-link" href="https://static.wixstatic.com/ugd/fe9abe_3897f841d44f4cd7b93f2a2bfbd9496e.pptx" target="_blank">Slides</a>
+          </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Increasing evidence indicates the importance of management in determining firms&#x27; productivity. Yet causal evidence regarding the effectiveness of management practices is scarce, especially for skilled labor in the developed world. In a field experiment measuring commercial airline captains’ productivity, we test four distinct management practices: performance monitoring, performance feedback, target setting, and prosocial incentives. These practices—particularly monitoring and target setting—significantly increase captains&#x27; productivity on the targeted fuel-saving dimensions, with positive spillovers on job satisfaction and CO2 emissions. The study reveals an uncharted research opportunity to delve into the black box of firms to examine the determinants of productivity among skilled labor.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-gosnell-airline-captains">@article{gosnell_airline_captains_2020,
+  author  = {Gosnell, Greer K. and List, John A. and Metcalfe, Robert D.},
+  title   = {The Impact of Management Practices on Employee Productivity: A Field Experiment with Airline Captains},
+  journal = {Journal of Political Economy},
+  year    = {2020},
+  volume  = {128},
+  number  = {4},
+  pages   = {1195--1233},
+  doi     = {10.1086/705375}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-gosnell-airline-captains', this)">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -996,12 +1166,29 @@
           <p class="pub-authors">Brandon, A., Clapp, C., List, J., Metcalfe, R., Price, M.</p>
         </div>
 
-        <div class="pub-card" data-cat="energy">
+        <div class="pub-card pub-card--expandable" data-cat="energy">
           <span class="pub-status-pill">Conditionally Accepted · AEJ: Economic Policy</span>
           <a class="pub-title" href="https://rmetcalfe.net/BernardHackettMetcalfeSchein_DecarbonizingHeat.pdf" target="_blank">Decarbonizing Heat: The Impact of Heat Pumps and a Time-of-Use Heat Pump Tariff on Energy Demand</a>
           <p class="pub-authors">Bernard, L., Hackett, A., Metcalfe, R., Schein, A.</p>
           <div class="pub-links">
             <a class="pub-link" href="https://cdn.sanity.io/files/lrxd4jqj/production/409144fe0a115c2fb6f96459ed9a276b30e68ad2.pdf" target="_blank">Executive Summary</a>
+          </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Heat pumps have been proposed as the leading technology in the electrification of domestic heat and therefore could play a crucial part in decarbonizing energy systems. However, there is limited causal evidence on how they affect energy demand and how energy prices can optimize their use. Leveraging a staggered rollout of heat pumps by a large energy supplier in Great Britain, we show: (1) heat pumps reduce average household gas use by 98% and increase electricity use by 50%, leading to a 72% reduction in carbon emissions from household energy consumption over a typical asset lifetime; (2) a time-of-use tariff (a retail electricity pricing plan) designed for heat pumps can halve electricity demand during the evening peak to enhance grid flexibility; (3) the marginal value of public funds for the current heat pump subsidy in Great Britain is £1.23 per £1 of government spending. Overall, we find that heat pumps can effectively decarbonize heat and subsidies can be welfare-enhancing.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-bernard-heat-pumps">@unpublished{bernard_decarbonizing_heat,
+  author = {Bernard, Louise and Hackett, Andy and Metcalfe, Robert D. and Schein, Andrew R.},
+  title  = {Decarbonizing Heat: The Impact of Heat Pumps and a Time-of-Use Heat Pump Tariff on Energy Demand},
+  note   = {Conditionally accepted, American Economic Journal: Economic Policy}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-bernard-heat-pumps', this)">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1011,10 +1198,27 @@
           <p class="pub-authors">Metcalfe, R., Roth, S.</p>
         </div>
 
-        <div class="pub-card" data-cat="public behavioral">
+        <div class="pub-card pub-card--expandable" data-cat="public behavioral">
           <span class="pub-status-pill">Conditionally Accepted · Accounting, Organizations and Society</span>
           <a class="pub-title" href="https://rmetcalfe.net/FloydHallsworthListMetcalfeRotaruVlaev_EnforcementAmbiguityTaxCompliance.pdf" target="_blank">How Resolving Enforcement Ambiguity Reduces Tax Compliance</a>
           <p class="pub-authors">Floyd, E., Hallsworth, M., List, J., Metcalfe, R., Rotaru, K., Vlaev, I.</p>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Tax authorities often leave the consequences of non-compliance unspecified. Enforcement letters warn of further action without stating what it is, and penalty notices give maxima set case by case. We examine whether specifying those consequences raises or lowers compliance, and why, in four experiments spanning both behavioral margins of the tax gap, from the field to physiological measurement. In a field experiment with HM Revenue and Customs, letters randomized to more than 200,000 taxpayers with outstanding income-tax debts increased payment when they left the consequences unspecified, but not when they specified a financial or an administrative consequence. In an online payment experiment with 2,050 taxpayers across fourteen conditions, of whom 1,194 formed the factorial design carrying the principal test, resolving the maximum fine lowered the stated likelihood of paying, whether the revealed maximum was modest or severe, which statistical updating about the penalty does not accommodate and ambiguity aversion does. An incentivized experiment with 827 participants reproduced the effect on an income-reporting decision with money at stake, extending it to the reporting margin. A laboratory experiment with 239 participants, using eye tracking and pupillometry, found that enforcement messages differed in the autonomic arousal they produced and not in the visual attention they received, and that pupillary response accounts for part of the association with compliance. Ambiguity about enforcement consequences, over and above penalty magnitude, is therefore a determinant of compliance, operating through affective response rather than belief revision. The findings have direct implications for how tax authorities disclose penalty schedules.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-floyd-enforcement-ambiguity">@unpublished{floyd_enforcement_ambiguity,
+  author = {Floyd, Eric and Hallsworth, Michael and List, John A. and Metcalfe, Robert D. and Rotaru, Kristian and Vlaev, Ivo},
+  title  = {How Resolving Enforcement Ambiguity Reduces Tax Compliance},
+  note   = {Conditionally accepted, Accounting, Organizations and Society}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-floyd-enforcement-ambiguity', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="pub-card" data-cat="energy">
@@ -1023,26 +1227,94 @@
           <p class="pub-authors">List, J., Metcalfe, R., Price, M.</p>
         </div>
 
-        <div class="pub-card" data-cat="energy">
+        <div class="pub-card pub-card--expandable" data-cat="energy">
           <a class="pub-title" href="https://rmetcalfe.net/BernardHackettMetcalfePanzoneSchein_DynamicPricesEVCharging.pdf" target="_blank">The Impact of Dynamic Prices on Electric Vehicle Public Charging Demand: Evidence from a Natural Field Experiment</a>
           <p class="pub-authors">Bernard, L., Hackett, A., Metcalfe, R., Panzone, L., Schein, A.</p>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Understanding how to effectively influence electric vehicle (EV) charging behavior is critical for managing electricity grids powered by high levels of variable renewable generation. We present results from a large-scale natural field experiment conducted in the United Kingdom, involving approximately 110,000 EV customers and 60% of the country’s public charging infrastructure. Within this network, we applied a price decrease to approximately one-fifth of chargers to bring their prices closer to the marginal cost of electricity in low-cost hours in Great Britain. Customers were randomly assigned to different price levels, allowing us to estimate the causal effect of price on charging demand and derive elasticities of short-run behavioral responses. Customers were responsive to price: a 40% reduction in charging was equivalent to an arc price elasticity of -0.90, while a 15% price cut was equivalent to an arc price elasticity of -0.85. Our findings suggest that dynamic pricing for public EV charging generated large consumer welfare gains.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-bernard-ev-dynamic-prices">@unpublished{bernard_ev_dynamic_prices,
+  author = {Bernard, Louise and Hackett, Andy and Metcalfe, Robert D. and Panzone, Luca A. and Schein, Andrew R.},
+  title  = {The Impact of Dynamic Prices on Electric Vehicle Public Charging Demand: Evidence from a Natural Field Experiment},
+  note   = {Working paper}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-bernard-ev-dynamic-prices', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="pub-card" data-cat="tech energy">
+        <div class="pub-card pub-card--expandable" data-cat="tech energy">
           <a class="pub-title" href="https://rmetcalfe.net/MetcalfeScheinSimpsonSun_AIinCharge.pdf" target="_blank">AI in Charge: Large-Scale Experimental Evidence on Electric Vehicle Charging Demand</a>
           <p class="pub-authors">Metcalfe, R., Simpson, C., Schein, A., Sun, Y.</p>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">One of the promising opportunities offered by AI to support the decarbonization of electricity grids is to align demand with low-carbon supply, yet there is little causal evidence on household acceptance of AI managed control, and its impact on their consumption. We evaluated the effects of the world’s largest AI managed EV charging tariff (a retail electricity pricing plan) using a large-scale natural field experiment. This tariff is designed to optimize EV charging by dynamically controlling charging in response to real-time wholesale electricity prices. We randomized financial incentives to encourage enrollment onto the tariff and observed consumption for more than a year. We found that the tariff led to a 42% reduction in household electricity demand during peak hours, with 100% of this demand shifted to lower-cost and lower-carbon-intensity periods. The tariff generated substantial consumer savings, while demonstrating potential to lower producer costs, energy system costs, and carbon emissions through significant load shifting. Overrides of the AI algorithm were low, suggesting that this tariff was likely more efficient than a real-time-pricing tariff without AI, given our theoretical framework. We also showed that experimental estimates differed meaningfully from those obtained via non-randomized difference-in-differences analysis, due to differences in the potential outcomes of the samples in the two evaluation strategies, although we can reconcile the estimates somewhat with observables. Our findings highlight the potential for scalable managed charging and its substantial welfare gains for the electricity system and society.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-metcalfe-ai-in-charge">@unpublished{metcalfe_ai_in_charge,
+  author = {Metcalfe, Robert D. and Schein, Andrew R. and Simpson, Cohen R. and Sun, Yixin},
+  title  = {AI in Charge: Large-Scale Experimental Evidence on Electric Vehicle Charging Demand},
+  note   = {Working paper}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-metcalfe-ai-in-charge', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="pub-card" data-cat="energy">
+        <div class="pub-card pub-card--expandable" data-cat="energy">
           <a class="pub-title" href="https://rmetcalfe.net/BernardMetcalfeSchein_CriticalPeakRewards.pdf" target="_blank">Critical Peak Rewards: Evidence from a Nationwide Demand Response Program</a>
           <p class="pub-authors">Bernard, L., Metcalfe, R., Schein, A.R.</p>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Demand flexibility at scale is likely to be an important part of the future energy system. This study evaluated the world’s first nationwide domestic and commercial demand flexibility program. We analyzed the policy using a natural field experiment, with a sample of 2.6 million, assigning 119,999 customers to a control group and the rest to receive randomized encouragement to sign up to the demand flexibility program. The program paid consumers to reduce their demand below a predicted baseline at peak demand across 16 events (i.e., when the system was stressed) during the Winter of 2023–24. Customers who opted into events reduced demand during events by 23.1% among compliers, at an average cost for the system operator of £2,325 per MWh. The adoption of solar panels and batteries, heat pumps, and EVs all increased demand response.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-bernard-critical-peak-rewards">@unpublished{bernard_critical_peak_rewards,
+  author = {Bernard, Louise and Metcalfe, Robert D. and Schein, Andrew R.},
+  title  = {Critical Peak Rewards: Evidence from a Nationwide Demand Response Program},
+  note   = {Working paper}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-bernard-critical-peak-rewards', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="pub-card" data-cat="energy">
+        <div class="pub-card pub-card--expandable" data-cat="energy">
           <a class="pub-title" href="https://rmetcalfe.net/LopezMetcalfeScheinSun_DemandSideAlternativeRenewableCurtailment.pdf" target="_blank">A Demand-Side Alternative to Renewable Curtailment: Natural Field Experimental Evidence from Two Countries</a>
           <p class="pub-authors">Lopez, D., Metcalfe, R., Schein, A., Sun, Y.</p>
           <div class="pub-links">
             <a class="pub-link" href="https://rmetcalfe.net/demand-turnup.html" target="_blank">✦ Interactive Page</a>
+          </div>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">As renewable generation plays a growing role in the energy system, periods of negative wholesale electricity prices are becoming increasingly common and are expected to grow dramatically over the next ten years. Traditionally, system operators respond by paying generators, especially renewables, to curtail production, or mandating that they do so without compensation. In this study, we propose and test a novel alternative: exposing consumers to free and negative prices to stimulate demand when supply is abundant. We implemented large-scale nationwide natural field experiments simultaneously in Great Britain and Spain, with roughly 60,000 residential customers in each country randomized to receive varying financial incentives to “turn up” their electricity. We found that demand increased substantially as prices fell to zero, but paying customers to consume beyond zero price yielded little additional response. Households with electric vehicles and rooftop solar had a larger elasticity than households without such technologies, suggesting demand turn-up becomes more effective as households adopt low-carbon technologies. In Great Britain, consumption was largely shifted from adjacent hours, while in Spain the increase appeared to represent net new demand. We develop a welfare framework showing conditions under which demand turn-up improves on curtailment; we find that by inducing additional consumption in periods and locations where the marginal cost of supply is low, demand turn-up generates welfare gains that curtailment leaves uncaptured.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-lopez-demand-turnup">@unpublished{lopez_demand_turnup,
+  author = {Lopez Garcia, Daniel and Metcalfe, Robert D. and Schein, Andrew R. and Sun, Yixin},
+  title  = {A Demand-Side Alternative to Renewable Curtailment: Natural Field Experimental Evidence from Two Countries},
+  note   = {Working paper}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-lopez-demand-turnup', this)">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1071,9 +1343,26 @@
           <p class="pub-authors">List, J., Metcalfe, R., Price, M., Rundhammer, F.</p>
         </div>
 
-        <div class="pub-card" data-cat="behavioral">
+        <div class="pub-card pub-card--expandable" data-cat="behavioral">
           <a class="pub-title" href="https://rmetcalfe.net/AkessonContiHahnMetcalfeRasooly_CanBadNormsBeGood.pdf" target="_blank">Can Bad Norms Be Good?</a>
           <p class="pub-authors">Akesson, J., Conti, R., Hahn, R., Metcalfe, R., Rasooly, I.</p>
+          <button class="pub-expand-trigger" type="button" onclick="toggleCard(this)" aria-expanded="false"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation</button>
+          <div class="pub-expand-body">
+            <div class="pub-expand-inner">
+              <hr class="pub-expand-divider" />
+              <p class="pub-expand-label">Abstract</p>
+              <p class="pub-abstract-text">Descriptive social norm interventions have been used to address a wide range of policy challenges, from encouraging resource conservation to promoting female labor force participation. In this paper, we report the results of a natural field experiment (n = 5,360) that randomly exposes participants to different signals about the share of others who have signed up as advocates for a charity. Consistent with prior work, we find that suggesting that everyone else has signed up increases the likelihood that participants themselves sign up as advocates. However, we also show that suggesting that no one else has signed up increases sign-up rates. We replicate these findings in a follow-up experiment (n = 5,042) that investigates why it can be effective to reveal ‘bad’ norms.</p>
+              <p class="pub-expand-label" style="margin-top:1rem">Citation</p>
+              <div class="pub-bibtex-wrap">
+                <pre class="pub-bibtex" id="bib-akesson-bad-norms">@unpublished{akesson_bad_norms,
+  author = {Akesson, Jesper and Conti, Rena and Hahn, Robert W. and Metcalfe, Robert D. and Rasooly, Itzhak},
+  title  = {Can Bad Norms Be Good?},
+  note   = {Working paper}
+}</pre>
+                <button class="pub-copy-btn" type="button" onclick="copyBibtex(event, 'bib-akesson-bad-norms', this)">Copy BibTeX</button>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -1308,9 +1597,8 @@
   function toggleCard(trigger) {
     const card = trigger.closest('.pub-card--expandable');
     const open = card.classList.toggle('open');
-    trigger.innerHTML = open
-      ? '<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 7.5l4-4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Close'
-      : '<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 3.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Abstract &amp; Citation';
+    trigger.setAttribute('aria-expanded', open);
+    trigger.lastChild.textContent = open ? ' Close' : ' Abstract & Citation';
   }
 
   function copyBibtex(e, id, btn) {
